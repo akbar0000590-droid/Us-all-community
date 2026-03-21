@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Apply | US-All Community Trust Relief Program</title>
+  <style>
+    /* === RESET & BASE === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: #1e293b;
+      line-height: 1.5;
+    }
+
+    /* === DESIGN TOKENS === */
+    :root {
+      --primary-blue: #0b3d91;
+      --primary-green: #28a745;
+      --white: #ffffff;
+      --off-white: #f9fbfd;
+      --gray-light: #eef2f6;
+      --gray-mid: #cbd5e1;
+      --text-dark: #0f172a;
+      --text-medium: #334155;
+      --overlay-dark: rgba(7, 25, 45, 0.8);
+      --shadow-sm: 0 4px 12px rgba(0, 20, 40, 0.06);
+      --shadow-hover: 0 20px 25px -8px rgba(0, 60, 30, 0.15);
+      --border-radius-card: 1.75rem;
+      --border-radius-pill: 60px;
+      --facebook-blue: #1877f2;
+      --gmail-red: #ea4335;
+    }
+
+    /* === UTILITY === */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* === HEADER === */
+    .site-header {
+      background: var(--white);
+      padding: 1.5rem 1rem 1.2rem;
+      text-align: center;
+      border-bottom: 1px solid #e0e8f0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    }
+
+    .logo-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-wrapper img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 6px 14px rgba(11,61,145,0.2);
+      transition: transform 0.2s ease;
+      border: 2px solid var(--primary-green);
+    }
+
+    .logo-wrapper img:hover {
+      transform: scale(1.02);
+    }
+
+    .program-name {
+      font-size: 2.1rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--primary-blue);
+      line-height: 1.2;
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      color: #2d4b6e;
+      font-weight: 400;
+      border-bottom: 2px solid var(--primary-green);
+      display: inline-block;
+      padding-bottom: 0.3rem;
+      margin-top: 0.1rem;
+    }
+
+    /* === STICKY NAVIGATION === */
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid #dee7f2;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      gap: 0.2rem 2rem;
+      padding: 0.9rem 1rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: var(--primary-blue);
+      padding: 0.3rem 0.1rem;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+      font-size: 1.05rem;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: var(--primary-green);
+      color: #0a2e6a;
+    }
+
+    .nav-links .active {
+      border-bottom-color: var(--primary-green);
+      font-weight: 600;
+    }
+
+    /* === PAGE HEADER === */
+    .page-header {
+      background: linear-gradient(135deg, #e8f1fe 0%, #ffffff 100%);
+      padding: 3.5rem 0 3rem;
+      text-align: center;
+      border-bottom: 1px solid #d9e2ef;
+    }
+
+    .page-header h1 {
+      font-size: 2.8rem;
+      color: var(--primary-blue);
+      margin-bottom: 1rem;
+    }
+
+    .page-header p {
+      font-size: 1.3rem;
+      color: #2d4b6e;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* === IMPORTANT NOTICE === */
+    .notice-banner {
+      background: #fff3cd;
+      border: 2px solid #ffc107;
+      border-radius: 60px;
+      padding: 1.2rem 2rem;
+      margin: -1.5rem auto 2rem;
+      max-width: 800px;
+      text-align: center;
+      font-weight: 600;
+      color: #856404;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      font-size: 1.2rem;
+    }
+
+    .notice-banner::before {
+      content: "⚠️";
+      font-size: 1.8rem;
+    }
+
+    /* === CONTACT CARDS SECTION === */
+    .contact-section {
+      margin: 3rem 0 5rem;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--primary-blue);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      margin: 3rem 0;
+    }
+
+    .contact-card {
+      background: white;
+      border-radius: 2.2rem;
+      padding: 2.8rem 2rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid #e7edf4;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .contact-card.facebook {
+      border-top: 6px solid var(--facebook-blue);
+    }
+
+    .contact-card.gmail {
+      border-top: 6px solid var(--gmail-red);
+    }
+
+    .contact-card.phone {
+      border-top: 6px solid var(--primary-green);
+    }
+
+    .contact-icon {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 2.8rem;
+    }
+
+    .facebook .contact-icon {
+      background: #e7f0ff;
+      color: var(--facebook-blue);
+    }
+
+    .gmail .contact-icon {
+      background: #ffe6e3;
+      color: var(--gmail-red);
+    }
+
+    .phone .contact-icon {
+      background: #e3f5e6;
+      color: var(--primary-green);
+    }
+
+    .contact-card h3 {
+      font-size: 2rem;
+      margin-bottom: 0.8rem;
+      color: var(--text-dark);
+    }
+
+    .contact-link {
+      display: inline-block;
+      font-size: 1.4rem;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.8rem 2rem;
+      border-radius: 60px;
+      margin: 1.5rem 0 1rem;
+      transition: all 0.2s;
+    }
+
+    .facebook .contact-link {
+      background: var(--facebook-blue);
+      color: white;
+    }
+
+    .facebook .contact-link:hover {
+      background: #145dbb;
+      transform: scale(1.05);
+    }
+
+    .gmail .contact-link {
+      background: var(--gmail-red);
+      color: white;
+    }
+
+    .gmail .contact-link:hover {
+      background: #c5221f;
+      transform: scale(1.05);
+    }
+
+    .phone .contact-link {
+      background: var(--primary-green);
+      color: white;
+    }
+
+    .phone .contact-link:hover {
+      background: #1f8f3c;
+      transform: scale(1.05);
+    }
+
+    .contact-detail {
+      font-size: 1.2rem;
+      color: #4a627a;
+      margin-top: 0.5rem;
+    }
+
+    .availability {
+      background: #f0f6fe;
+      border-radius: 60px;
+      padding: 0.8rem 1.2rem;
+      font-size: 1rem;
+      color: var(--primary-blue);
+      margin-top: 1.5rem;
+    }
+
+    /* === PROCESS STEPS (how to apply via support) === */
+    .process-container {
+      background: var(--off-white);
+      border-radius: 2.5rem;
+      padding: 3rem;
+      margin: 4rem 0;
+    }
+
+    .process-steps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .process-step {
+      flex: 1 1 200px;
+      text-align: center;
+      position: relative;
+    }
+
+    .step-number {
+      width: 50px;
+      height: 50px;
+      background: var(--primary-blue);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin: 0 auto 1.5rem;
+    }
+
+    .process-step h4 {
+      color: var(--primary-blue);
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .process-step p {
+      color: #4a627a;
+    }
+
+    /* === APPLICATION STATUS REMINDER === */
+    .status-reminder {
+      background: white;
+      border-radius: 2rem;
+      padding: 2.5rem;
+      text-align: center;
+      border: 2px dashed var(--primary-green);
+      margin: 3rem 0;
+    }
+
+    .status-reminder h3 {
+      color: var(--primary-blue);
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .status-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .badge {
+      background: #f0f6fe;
+      border-radius: 60px;
+      padding: 0.8rem 2rem;
+      font-weight: 600;
+      color: var(--primary-blue);
+      border: 2px solid transparent;
+    }
+
+    .badge.active {
+      border-color: var(--primary-green);
+      background: #e3f5e6;
+    }
+
+    /* === FAQ SECTION === */
+    .faq-section {
+      margin: 4rem 0;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .faq-item {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.8rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .faq-item h4 {
+      color: var(--primary-blue);
+      margin-bottom: 0.8rem;
+      font-size: 1.2rem;
+    }
+
+    /* === FOOTER === */
+    .footer {
+      background: #0a1d30;
+      color: #d1ddee;
+      padding: 3rem 0 1.5rem;
+      margin-top: 4rem;
+      border-top: 5px solid var(--primary-green);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .footer h4 {
+      color: white;
+      margin-bottom: 1.3rem;
+      border-left: 4px solid #28a745;
+      padding-left: 1rem;
+      font-weight: 600;
+    }
+
+    .footer a {
+      color: #b6cae5;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer a:hover {
+      color: var(--primary-green);
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .copyright {
+      text-align: center;
+      border-top: 1px solid #1f3b54;
+      margin-top: 2.8rem;
+      padding-top: 1.8rem;
+      font-size: 0.95rem;
+      color: #9bb1ca;
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 700px) {
+      .container {
+        padding: 0 1.5rem;
+      }
+      .program-name {
+        font-size: 1.8rem;
+      }
+      .page-header h1 {
+        font-size: 2.2rem;
+      }
+      .contact-card {
+        padding: 2rem 1.5rem;
+      }
+      .contact-link {
+        font-size: 1.2rem;
+      }
+      .process-container {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="logo-wrapper">
+    <img src="/assets/images/logo.jpg" alt="US-All Community Trust Logo">
+    <h1 class="program-name">US-All Community Trust Relief Program</h1>
+    <div class="tagline">Support for families, entrepreneurs & nonprofits</div>
+  </div>
+</header>
+
+<!-- STICKY NAVIGATION -->
+<nav class="sticky-nav">
+  <ul class="nav-links container">
+    <li><a href="/index.html">Home</a></li>
+    <li><a href="/pages/program.html">Programs</a></li>
+    <li><a href="/pages/checkeligibility.html">Eligibility</a></li>
+    <li><a href="/pages/apply.html" class="active">Apply</a></li>
+    <li><a href="/pages/contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="container">
+    <h1>Apply for Relief Grants</h1>
+    <p>Our support team will guide you through the application process personally</p>
+  </div>
+</section>
+
+<main class="container">
+  <!-- IMPORTANT NOTICE - NO ONLINE APPLICATIONS -->
+  <div class="notice-banner">
+    Applications are currently submitted through support only — no direct online applications
+  </div>
+
+  <!-- CONTACT SUPPORT SECTION - 3 CARDS -->
+  <section class="contact-section">
+    <h2 class="section-title">Contact Our Support Team to Apply</h2>
+    
+    <div class="contact-grid">
+      <!-- FACEBOOK CARD -->
+      <div class="contact-card facebook">
+        <div class="contact-icon">
+          <span>📘</span>
+        </div>
+        <h3>Facebook</h3>
+        <div class="contact-detail">@USAllReliefProgram</div>
+        <a href="https://www.facebook.com/share/1CRaeazT6Q/" target="_blank" class="contact-link">Message on Facebook</a>
+        <div class="availability">We reply within 24 hours • 7 days a week</div>
+        <p style="margin-top: 1rem; color: #4a627a;">Send us a message with your name and program interest</p>
+      </div>
+
+      <!-- GMAIL CARD -->
+      <div class="contact-card gmail">
+        <div class="contact-icon">
+          <span>📧</span>
+        </div>
+        <h3>Gmail</h3>
+        <div class="contact-detail">USACTRP.gov</div>
+        <a href="mailto:usallcommunitytrustreliefprogr@gmail.com" class="contact-link">Email Us</a>
+        <div class="availability">We reply within 24 hours • 7 days a week</div>
+        <p style="margin-top: 1rem; color: #4a627a;">Include "Application Request" in subject line</p>
+      </div>
+
+      <!-- PHONE CARD -->
+      <div class="contact-card phone">
+        <div class="contact-icon">
+          <span>📞</span>
+        </div>
+        <h3>Phone</h3>
+        <div class="contact-detail">(385) 281-3672</div>
+        <a href="tel:+18005550199" class="contact-link">Call Now</a>
+        <div class="availability">Mon-Fri: 8am-8pm • Sat: 9am-3pm (EST)</div>
+        <p style="margin-top: 1rem; color: #4a627a;">Our specialists will start your application during your interview</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO APPLY VIA SUPPORT - PROCESS -->
+  <section class="process-container">
+    <h2 class="section-title">How to Apply Through Support</h2>
+    
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-number">1</div>
+        <h4>Choose Contact Method</h4>
+        <p>Facebook, email, or phone — whatever works best for you</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">2</div>
+        <h4>Provide Basic Info</h4>
+        <p>Name, contact details, and which program you're interested in</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">3</div>
+        <h4>Speak with Specialist</h4>
+        <p>Our team will explain requirements and answer questions</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">4</div>
+        <h4>Submit Documents</h4>
+        <p>Send documents securely via email or Facebook</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">5</div>
+        <h4>Get Application ID</h4>
+        <p>Receive your unique ID to track status</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT TO PREPARE BEFORE CONTACTING -->
+  <section style="margin: 4rem 0;">
+    <h2 class="section-title">What to Prepare Before Contacting Us</h2>
+    
+    <div class="docs-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+      <div class="doc-item" style="background: white; border-radius: 1.5rem; padding: 1.8rem; text-align: center; border: 1px solid #e2eaf2;">
+        <div class="doc-icon" style="font-size: 2.5rem; margin-bottom: 1rem;">🪪</div>
+        <h4 style="color: var(--primary-blue);">ID Document</h4>
+        <p style="color: #4a627a;">Driver's license, passport, or state ID</p>
+      </div>
+      <div class="doc-item" style="background: white; border-radius: 1.5rem; padding: 1.8rem; text-align: center; border: 1px solid #e2eaf2;">
+        <div class="doc-icon" style="font-size: 2.5rem; margin-bottom: 1rem;">💰</div>
+        <h4 style="color: var(--primary-blue);">Income Proof</h4>
+        <p style="color: #4a627a;">Pay stubs, tax return, or bank statement</p>
+      </div>
+      <div class="doc-item" style="background: white; border-radius: 1.5rem; padding: 1.8rem; text-align: center; border: 1px solid #e2eaf2;">
+        <div class="doc-icon" style="font-size: 2.5rem; margin-bottom: 1rem;">🏠</div>
+        <h4 style="color: var(--primary-blue);">Residency Proof</h4>
+        <p style="color: #4a627a;">Utility bill or lease agreement</p>
+      </div>
+      <div class="doc-item" style="background: white; border-radius: 1.5rem; padding: 1.8rem; text-align: center; border: 1px solid #e2eaf2;">
+        <div class="doc-icon" style="font-size: 2.5rem; margin-bottom: 1rem;">📋</div>
+        <h4 style="color: var(--primary-blue);">Program Choice</h4>
+        <p style="color: #4a627a;">Which grant you want to apply for</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLICATION STATUS REMINDER -->
+  <section class="status-reminder">
+    <h3>Already Applied?</h3>
+    <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">Track your application status using the ID provided by your support specialist</p>
+    
+    <div class="status-badges">
+      <span class="badge">Submitted</span>
+      <span class="badge active">Under Review</span>
+      <span class="badge">Approved</span>
+      <span class="badge">Not Approved</span>
+    </div>
+    
+    <p style="margin-top: 1.5rem;">📞 <strong>Status hotline:</strong> (382) 281-3672 (press 2) — have your application ID ready</p>
+  </section>
+
+  <!-- FREQUENTLY ASKED QUESTIONS -->
+  <section class="faq-section">
+    <h2 class="section-title">Application Support FAQs</h2>
+    
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h4>Why can't I apply directly online?</h4>
+        <p>We provide personalized support to ensure your application is complete and accurate. Our specialists help prevent errors that could delay funding.</p>
+      </div>
+      <div class="faq-item">
+        <h4>How long until I hear back?</h4>
+        <p>You'll receive an initial response within 24 hours. A specialist will be assigned to guide you through the entire process.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Is Facebook secure for documents?</h4>
+        <p>We use Facebook's encrypted messaging. For sensitive documents, we recommend email or phone consultation.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What if I don't have Facebook?</h4>
+        <p>No problem! You can email us or call. All methods work equally well.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Can I apply for multiple programs?</h4>
+        <p>Yes, discuss with your specialist which programs fit your situation best.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Is there any payment or fee?</h4>
+        <p>No. Our support and application assistance costs you nothing. We do not charge for our help.
+If a grant program has its own required filing fees, those details will be in the application instructions. We are here to help you navigate that, but our services remain free.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT REMINDER -->
+  <div style="text-align: center; background: var(--off-white); border-radius: 2rem; padding: 2.5rem; margin: 4rem 0;">
+    <h3 style="color: var(--primary-blue); font-size: 1.8rem; margin-bottom: 1rem;">Ready to start?</h3>
+    <p style="font-size: 1.2rem; margin-bottom: 2rem;">Choose your preferred contact method above or reach out directly:</p>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+      <span style="font-size: 1.2rem;">📘 @USAllReliefProgram</span>
+      <span style="font-size: 1.2rem;">📧 USACTRP.gov</span>
+      <span style="font-size: 1.2rem;">📞 (385) 281-3672</span>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li>📞(385) 281-3699</li>
+          <li>📧 relief@communitytrust.gov</li>
+          
+          <li>2020 W. El Camino ave, Suite 95833<br>Sacramento, CA United States</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>© 2025 US-All Community Trust Relief Program – No online applications. Contact support team directly. No payment required.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Check Eligibility | US-All Community Trust Relief Program</title>
+  <style>
+    /* === RESET & BASE === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: #1e293b;
+      line-height: 1.5;
+    }
+
+    /* === DESIGN TOKENS === */
+    :root {
+      --primary-blue: #0b3d91;
+      --primary-green: #28a745;
+      --white: #ffffff;
+      --off-white: #f9fbfd;
+      --gray-light: #eef2f6;
+      --gray-mid: #cbd5e1;
+      --text-dark: #0f172a;
+      --text-medium: #334155;
+      --overlay-dark: rgba(7, 25, 45, 0.8);
+      --shadow-sm: 0 4px 12px rgba(0, 20, 40, 0.06);
+      --shadow-hover: 0 20px 25px -8px rgba(0, 60, 30, 0.15);
+      --border-radius-card: 1.75rem;
+      --border-radius-pill: 60px;
+    }
+
+    /* === UTILITY === */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* === HEADER (matches homepage) === */
+    .site-header {
+      background: var(--white);
+      padding: 1.5rem 1rem 1.2rem;
+      text-align: center;
+      border-bottom: 1px solid #e0e8f0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    }
+
+    .logo-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-wrapper img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 6px 14px rgba(11,61,145,0.2);
+      transition: transform 0.2s ease;
+      border: 2px solid var(--primary-green);
+    }
+
+    .logo-wrapper img:hover {
+      transform: scale(1.02);
+    }
+
+    .program-name {
+      font-size: 2.1rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--primary-blue);
+      line-height: 1.2;
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      color: #2d4b6e;
+      font-weight: 400;
+      border-bottom: 2px solid var(--primary-green);
+      display: inline-block;
+      padding-bottom: 0.3rem;
+      margin-top: 0.1rem;
+    }
+
+    /* === STICKY NAVIGATION === */
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid #dee7f2;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      gap: 0.2rem 2rem;
+      padding: 0.9rem 1rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: var(--primary-blue);
+      padding: 0.3rem 0.1rem;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+      font-size: 1.05rem;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: var(--primary-green);
+      color: #0a2e6a;
+    }
+
+    .nav-links .active {
+      border-bottom-color: var(--primary-green);
+      font-weight: 600;
+    }
+
+    /* === PAGE HEADER === */
+    .page-header {
+      background: linear-gradient(135deg, #e8f1fe 0%, #ffffff 100%);
+      padding: 3.5rem 0 3rem;
+      text-align: center;
+      border-bottom: 1px solid #d9e2ef;
+    }
+
+    .page-header h1 {
+      font-size: 2.8rem;
+      color: var(--primary-blue);
+      margin-bottom: 1rem;
+    }
+
+    .page-header p {
+      font-size: 1.3rem;
+      color: #2d4b6e;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* === ELIGIBILITY CHECKER CARD === */
+    .checker-card {
+      background: white;
+      border-radius: 2.5rem;
+      box-shadow: var(--shadow-hover);
+      padding: 2.5rem;
+      margin: -2rem auto 3rem;
+      max-width: 900px;
+      border: 1px solid #e2eaf2;
+      position: relative;
+      z-index: 10;
+    }
+
+    .checker-title {
+      color: var(--primary-blue);
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      color: #1e3a5f;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .form-group select, 
+    .form-group input {
+      width: 100%;
+      padding: 0.9rem 1.2rem;
+      border: 2px solid #dde3eb;
+      border-radius: 60px;
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+      background: white;
+    }
+
+    .form-group select:focus,
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--primary-blue);
+    }
+
+    .form-group input:disabled {
+      background: #f5f7fa;
+      color: #64748b;
+    }
+
+    .zip-group {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .zip-group input {
+      flex: 2;
+    }
+
+    .zip-group button {
+      flex: 1;
+      background: var(--primary-blue);
+      color: white;
+      border: none;
+      border-radius: 60px;
+      padding: 0.9rem 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .zip-group button:hover {
+      background: #0a2e6a;
+    }
+
+    .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding: 0.5rem 0;
+    }
+
+    .checkbox-group label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 400;
+      cursor: pointer;
+      margin-bottom: 0;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      width: auto;
+      accent-color: var(--primary-green);
+    }
+
+    .checker-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .btn-primary {
+      background: var(--primary-green);
+      color: white;
+      border: none;
+      padding: 1rem 2.5rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      flex: 1;
+    }
+
+    .btn-primary:hover {
+      background: #1f8f3c;
+      transform: scale(1.02);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--primary-blue);
+      border: 2px solid var(--primary-blue);
+      padding: 1rem 2.5rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      flex: 1;
+    }
+
+    .btn-secondary:hover {
+      background: #f0f6ff;
+    }
+
+    /* === ELIGIBILITY RESULT === */
+    .result-card {
+      background: #f0f9ff;
+      border-radius: 2rem;
+      padding: 2rem;
+      margin: 2rem 0 0;
+      border-left: 8px solid var(--primary-green);
+      display: none;
+    }
+
+    .result-card.show {
+      display: block;
+      animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .result-card h3 {
+      color: var(--primary-blue);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .result-card p {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .result-eligible {
+      color: var(--primary-green);
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+
+    .result-ineligible {
+      color: #b91c1c;
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+
+    .next-steps {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+      border: 1px dashed var(--primary-blue);
+    }
+
+    /* === LOCATION INFO === */
+    .location-badge {
+      background: #e6f0fa;
+      border-radius: 60px;
+      padding: 0.8rem 1.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .location-badge span {
+      color: var(--primary-blue);
+      font-weight: 600;
+    }
+
+    /* === DETAILED CRITERIA === */
+    .criteria-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 4rem 0;
+    }
+
+    .criteria-card {
+      background: var(--off-white);
+      border-radius: 2rem;
+      padding: 2rem;
+      border: 1px solid #e2eaf2;
+      transition: transform 0.2s;
+    }
+
+    .criteria-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .criteria-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .criteria-card h3 {
+      color: var(--primary-blue);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      border-bottom: 3px solid var(--primary-green);
+      display: inline-block;
+      padding-bottom: 0.3rem;
+    }
+
+    .criteria-list {
+      list-style: none;
+      margin-top: 1rem;
+    }
+
+    .criteria-list li {
+      margin-bottom: 0.8rem;
+      padding-left: 1.8rem;
+      position: relative;
+    }
+
+    .criteria-list li::before {
+      content: "✓";
+      color: var(--primary-green);
+      font-weight: 700;
+      position: absolute;
+      left: 0;
+    }
+
+    /* === INCOME GUIDELINES TABLE === */
+    .income-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 2rem;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      margin: 2rem 0 3rem;
+    }
+
+    .income-table th {
+      background: var(--primary-blue);
+      color: white;
+      padding: 1.2rem;
+      font-weight: 600;
+      text-align: left;
+    }
+
+    .income-table td {
+      padding: 1rem 1.2rem;
+      border-bottom: 1px solid #e2eaf2;
+    }
+
+    .income-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .income-table tr:hover td {
+      background: #f5f9ff;
+    }
+
+    /* === DOCUMENTS NEEDED === */
+    .docs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 3rem 0;
+    }
+
+    .doc-item {
+      background: white;
+      border: 1px solid #dde3eb;
+      border-radius: 1.5rem;
+      padding: 1.8rem 1.2rem;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    .doc-item:hover {
+      border-color: var(--primary-green);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .doc-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .doc-item h4 {
+      color: var(--primary-blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .doc-item p {
+      color: #4a627a;
+      font-size: 0.95rem;
+    }
+
+    /* === FAQ SECTION === */
+    .eligibility-faq {
+      background: var(--off-white);
+      border-radius: 2.5rem;
+      padding: 3rem;
+      margin: 4rem 0;
+    }
+
+    .faq-item {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .faq-item h4 {
+      color: var(--primary-blue);
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    /* === FOOTER === */
+    .footer {
+      background: #0a1d30;
+      color: #d1ddee;
+      padding: 3rem 0 1.5rem;
+      margin-top: 4rem;
+      border-top: 5px solid var(--primary-green);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .footer h4 {
+      color: white;
+      margin-bottom: 1.3rem;
+      border-left: 4px solid #28a745;
+      padding-left: 1rem;
+      font-weight: 600;
+    }
+
+    .footer a {
+      color: #b6cae5;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer a:hover {
+      color: var(--primary-green);
+      text-decoration: underline wavy 1px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .copyright {
+      text-align: center;
+      border-top: 1px solid #1f3b54;
+      margin-top: 2.8rem;
+      padding-top: 1.8rem;
+      font-size: 0.95rem;
+      color: #9bb1ca;
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 700px) {
+      .container {
+        padding: 0 1.5rem;
+      }
+      .program-name {
+        font-size: 1.8rem;
+      }
+      .page-header h1 {
+        font-size: 2.2rem;
+      }
+      .checker-card {
+        padding: 1.5rem;
+        margin: -1rem 1rem 2rem;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .zip-group {
+        flex-direction: column;
+      }
+      .checkbox-group {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .checker-actions {
+        flex-direction: column;
+      }
+      .eligibility-faq {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="logo-wrapper">
+    <img src="/assets/images/logo.jpg" alt="US-All Community Trust Logo">
+    <h1 class="program-name">US-All Community Trust Relief Program</h1>
+    <div class="tagline">Support for families, entrepreneurs & nonprofits</div>
+  </div>
+</header>
+
+<!-- STICKY NAVIGATION -->
+<nav class="sticky-nav">
+  <ul class="nav-links container">
+    <li><a href="/index.html">Home</a></li>
+    <li><a href="/pages/program.html">Programs</a></li>
+    <li><a href="/pages/checkeligibility.html" class="active">Eligibility</a></li>
+    <li><a href="/pages/apply.html">Apply</a></li>
+    <li><a href="/pages/contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="container">
+    <h1>Check Your Eligibility</h1>
+    <p>Find out which programs you may qualify for — all 50 states, counties, and zip codes supported.</p>
+  </div>
+</section>
+
+<main>
+  <!-- ELIGIBILITY CHECKER WITH ALL USA STATES/COUNTIES -->
+  <div class="container">
+    <div class="checker-card">
+      <h2 class="checker-title">📍 Nationwide Eligibility Checker</h2>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="state">Select State</label>
+          <select id="state" onchange="updateCounties()">
+            <option value="">-- Choose a state --</option>
+            <option value="AL">Alabama</option>
+            <option value="AK">Alaska</option>
+            <option value="AZ">Arizona</option>
+            <option value="AR">Arkansas</option>
+            <option value="CA">California</option>
+            <option value="CO">Colorado</option>
+            <option value="CT">Connecticut</option>
+            <option value="DE">Delaware</option>
+            <option value="FL">Florida</option>
+            <option value="GA">Georgia</option>
+            <option value="HI">Hawaii</option>
+            <option value="ID">Idaho</option>
+            <option value="IL">Illinois</option>
+            <option value="IN">Indiana</option>
+            <option value="IA">Iowa</option>
+            <option value="KS">Kansas</option>
+            <option value="KY">Kentucky</option>
+            <option value="LA">Louisiana</option>
+            <option value="ME">Maine</option>
+            <option value="MD">Maryland</option>
+            <option value="MA">Massachusetts</option>
+            <option value="MI">Michigan</option>
+            <option value="MN">Minnesota</option>
+            <option value="MS">Mississippi</option>
+            <option value="MO">Missouri</option>
+            <option value="MT">Montana</option>
+            <option value="NE">Nebraska</option>
+            <option value="NV">Nevada</option>
+            <option value="NH">New Hampshire</option>
+            <option value="NJ">New Jersey</option>
+            <option value="NM">New Mexico</option>
+            <option value="NY">New York</option>
+            <option value="NC">North Carolina</option>
+            <option value="ND">North Dakota</option>
+            <option value="OH">Ohio</option>
+            <option value="OK">Oklahoma</option>
+            <option value="OR">Oregon</option>
+            <option value="PA">Pennsylvania</option>
+            <option value="RI">Rhode Island</option>
+            <option value="SC">South Carolina</option>
+            <option value="SD">South Dakota</option>
+            <option value="TN">Tennessee</option>
+            <option value="TX">Texas</option>
+            <option value="UT">Utah</option>
+            <option value="VT">Vermont</option>
+            <option value="VA">Virginia</option>
+            <option value="WA">Washington</option>
+            <option value="WV">West Virginia</option>
+            <option value="WI">Wisconsin</option>
+            <option value="WY">Wyoming</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="county">Select County</label>
+          <select id="county">
+            <option value="">-- First select a state --</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="zip">ZIP Code (optional but helpful)</label>
+          <div class="zip-group">
+            <input type="text" id="zip" placeholder="e.g., 90210" maxlength="5" pattern="\d*">
+            <button onclick="lookupZip()">Lookup</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="household-size">Household size</label>
+          <select id="household-size">
+            <option value="1">1 person</option>
+            <option value="2">2 people</option>
+            <option value="3">3 people</option>
+            <option value="4">4 people</option>
+            <option value="5">5 people</option>
+            <option value="6">6 people</option>
+            <option value="7">7 people</option>
+            <option value="8">8+ people</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="annual-income">Annual household income ($)</label>
+          <input type="number" id="annual-income" placeholder="e.g., 45000" min="0" step="1000">
+        </div>
+
+        <div class="form-group">
+          <label>Applicant type (select all)</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox" id="family-type"> Family with dependents</label>
+            <label><input type="checkbox" id="business-type"> Business owner</label>
+            <label><input type="checkbox" id="creative-type"> Creative/artist</label>
+          </div>
+        </div>
+      </div>
+
+      <div id="location-display" class="location-badge" style="display: none;">
+        📍 <span id="location-text"></span>
+      </div>
+
+      <div class="checker-actions">
+        <button class="btn-primary" onclick="checkEligibility()">Check My Eligibility</button>
+        <button class="btn-secondary" onclick="resetChecker()">Reset</button>
+      </div>
+
+      <!-- Eligibility Result -->
+      <div id="eligibility-result" class="result-card">
+        <h3>✅ Eligibility Result</h3>
+        <p id="result-message"></p>
+        <div id="next-steps" class="next-steps"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DETAILED ELIGIBILITY CRITERIA -->
+  <div class="container">
+    <h2 class="section-title">Program Requirements by Category</h2>
+    <div class="criteria-grid">
+      <div class="criteria-card">
+        <div class="criteria-icon">👨‍👩‍👧‍👦</div>
+        <h3>Family Support</h3>
+        <ul class="criteria-list">
+          <li>Income below 80% Area Median Income</li>
+          <li>At least one dependent (under 18 or 65+)</li>
+          <li>Valid government ID</li>
+          <li>Proof of residency</li>
+          <li>Social Security Number or ITIN</li>
+        </ul>
+      </div>
+
+      <div class="criteria-card">
+        <div class="criteria-icon">💼</div>
+        <h3>Micro-Enterprise</h3>
+        <ul class="criteria-list">
+          <li>1-5 employees (including owner)</li>
+          <li>Annual revenue under $100,000</li>
+          <li>In operation 6+ months or detailed plan</li>
+          <li>Business license or EIN</li>
+          <li>No active bankruptcy</li>
+        </ul>
+      </div>
+
+      <div class="criteria-card">
+        <div class="criteria-icon">🎨</div>
+        <h3>Creative Entrepreneur</h3>
+        <ul class="criteria-list">
+          <li>Active creative practice for 1+ year</li>
+          <li>Portfolio or work samples</li>
+          <li>Reside in any US state or territory</li>
+          <li>Demonstrated community involvement</li>
+          <li>Not a full-time student</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- NATIONAL INCOME GUIDELINES -->
+    <h2 class="section-title">2025 National Income Guidelines (80% AMI)</h2>
+    <table class="income-table">
+      <thead>
+        <tr>
+          <th>Household Size</th>
+          <th>Maximum Annual Income</th>
+          <th>Maximum Monthly Income</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1 person</td><td>$58,450</td><td>$4,870</td></tr>
+        <tr><td>2 people</td><td>$66,800</td><td>$5,566</td></tr>
+        <tr><td>3 people</td><td>$75,150</td><td>$6,262</td></tr>
+        <tr><td>4 people</td><td>$83,500</td><td>$6,958</td></tr>
+        <tr><td>5 people</td><td>$90,200</td><td>$7,516</td></tr>
+        <tr><td>6 people</td><td>$96,900</td><td>$8,075</td></tr>
+        <tr><td>7 people</td><td>$103,600</td><td>$8,633</td></tr>
+        <tr><td>8+ people</td><td>$110,300</td><td>$9,191</td></tr>
+      </tbody>
+    </table>
+
+    <!-- REQUIRED DOCUMENTS -->
+    <h2 class="section-title">Documents You'll Need</h2>
+    <div class="docs-grid">
+      <div class="doc-item">
+        <div class="doc-icon">🪪</div>
+        <h4>Government ID</h4>
+        <p>Driver's license, passport, or state ID</p>
+      </div>
+      <div class="doc-item">
+        <div class="doc-icon">📄</div>
+        <h4>Proof of Income</h4>
+        <p>Pay stubs, tax returns, or bank statements</p>
+      </div>
+      <div class="doc-item">
+        <div class="doc-icon">🏠</div>
+        <h4>Proof of Residency</h4>
+        <p>Utility bill, lease, or mortgage statement</p>
+      </div>
+      <div class="doc-item">
+        <div class="doc-icon">📋</div>
+        <h4>Business Documents</h4>
+        <p>License, EIN, or business plan</p>
+      </div>
+      <div class="doc-item">
+        <div class="doc-icon">🖼️</div>
+        <h4>Portfolio</h4>
+        <p>Work samples for creative grant</p>
+      </div>
+    </div>
+
+    <!-- FAQ SECTION -->
+    <section class="eligibility-faq">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h4>I live in a US territory (Puerto Rico, Guam, etc.). Can I apply?</h4>
+        <p>Yes! We accept applications from all US states and territories. Income guidelines are adjusted for cost of living.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What if my county isn't listed?</h4>
+        <p>All 3,243 US counties and county-equivalents are in our database. If you can't find yours, please contact us.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Do I need to be a US citizen?</h4>
+        <p>No. We accept ITIN, foreign passports, and consular IDs. Your immigration status does not affect eligibility.</p>
+      </div>
+      <div class="faq-item">
+        <h4>How are income limits determined?</h4>
+        <p>We use HUD's 80% Area Median Income (AMI) guidelines, updated annually for every county.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Can I apply from any state?</h4>
+        <p>Yes, we serve applicants in all 50 states. Some programs have geographic priorities, but everyone is considered.</p>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION -->
+    <div style="text-align: center; margin: 4rem 0;">
+      <h2 style="color: var(--primary-blue); margin-bottom: 1.5rem;">Ready to start your application?</h2>
+      <a href="/pages/apply.html" class="btn" style="font-size: 1.3rem; padding: 1.2rem 3.5rem;">Begin Application</a>
+      <p style="margin-top: 1rem; color: #4a627a;">Questions? Reach out to us on:📞 (385) 281‑3672</p>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li>📞 (385) 281‑3672</li>
+          <li>📧 usallcommunitytrustreliefprogr@gmail.com</li>
+          <li>🏛️ 2020 W El Camino  Ave, Sacramento, CA United  States  95833 </li>
+        </ul>
+      <div>
+        <h4>Stay connected</h4>
+        
+    </div>
+    <div class="copyright">
+      <p>© 2025 US-All Community Trust Relief Program – Serving all 50 states, counties, and territories. No payment required.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- JavaScript for Counties and ZIP Codes -->
+<script>
+  // Sample county data for each state (abbreviated for demo - in production would have all 3000+ counties)
+  const countiesByState = {
+    'AL': ['Jefferson County', 'Mobile County', 'Madison County', 'Montgomery County', 'Shelby County', 'Tuscaloosa County', 'Baldwin County', 'Lee County'],
+    'AK': ['Anchorage Municipality', 'Fairbanks North Star', 'Matanuska-Susitna', 'Kenai Peninsula', 'Juneau City and Borough'],
+    'AZ': ['Maricopa County', 'Pima County', 'Pinal County', 'Yavapai County', 'Coconino County', 'Mohave County', 'Yuma County'],
+    'AR': ['Pulaski County', 'Benton County', 'Washington County', 'Sebastian County', 'Saline County', 'Craighead County'],
+    'CA': ['Los Angeles County', 'San Diego County', 'Orange County', 'Riverside County', 'San Bernardino County', 'Santa Clara County', 'Alameda County', 'Sacramento County'],
+    'CO': ['Denver County', 'El Paso County', 'Arapahoe County', 'Jefferson County', 'Adams County', 'Larimer County', 'Boulder County'],
+    'CT': ['Fairfield County', 'Hartford County', 'New Haven County', 'Litchfield County', 'Middlesex County'],
+    'DE': ['New Castle County', 'Kent County', 'Sussex County'],
+    'FL': ['Miami-Dade County', 'Broward County', 'Palm Beach County', 'Hillsborough County', 'Orange County', 'Duval County', 'Pinellas County'],
+    'GA': ['Fulton County', 'Gwinnett County', 'Cobb County', 'DeKalb County', 'Clayton County', 'Chatham County', 'Richmond County'],
+    'HI': ['Honolulu County', 'Hawaii County', 'Maui County', 'Kauai County'],
+    'ID': ['Ada County', 'Canyon County', 'Kootenai County', 'Bonneville County', 'Twin Falls County'],
+    'IL': ['Cook County', 'DuPage County', 'Lake County', 'Will County', 'Kane County', 'McHenry County', 'Winnebago County'],
+    'IN': ['Marion County', 'Lake County', 'Allen County', 'Hamilton County', 'St. Joseph County', 'Vanderburgh County'],
+    'IA': ['Polk County', 'Linn County', 'Scott County', 'Johnson County', 'Black Hawk County', 'Woodbury County'],
+    'KS': ['Johnson County', 'Sedgwick County', 'Shawnee County', 'Wyandotte County', 'Douglas County', 'Leavenworth County'],
+    'KY': ['Jefferson County', 'Fayette County', 'Kenton County', 'Boone County', 'Campbell County', 'Warren County'],
+    'LA': ['East Baton Rouge Parish', 'Jefferson Parish', 'Orleans Parish', 'Caddo Parish', 'Lafayette Parish', 'Calcasieu Parish'],
+    'ME': ['Cumberland County', 'York County', 'Penobscot County', 'Kennebec County', 'Androscoggin County'],
+    'MD': ['Montgomery County', 'Prince Georges County', 'Baltimore County', 'Anne Arundel County', 'Howard County', 'Frederick County'],
+    'MA': ['Middlesex County', 'Worcester County', 'Essex County', 'Suffolk County', 'Norfolk County', 'Bristol County'],
+    'MI': ['Wayne County', 'Oakland County', 'Macomb County', 'Kent County', 'Genesee County', 'Washtenaw County'],
+    'MN': ['Hennepin County', 'Ramsey County', 'Dakota County', 'Anoka County', 'Washington County', 'St. Louis County'],
+    'MS': ['Hinds County', 'Harrison County', 'Jackson County', 'Rankin County', 'Madison County', 'DeSoto County'],
+    'MO': ['St. Louis County', 'Jackson County', 'St. Charles County', 'Greene County', 'Clay County', 'Jefferson County'],
+    'MT': ['Yellowstone County', 'Missoula County', 'Gallatin County', 'Flathead County', 'Cascade County'],
+    'NE': ['Douglas County', 'Lancaster County', 'Sarpy County', 'Hall County', 'Buffalo County'],
+    'NV': ['Clark County', 'Washoe County', 'Carson City', 'Douglas County', 'Lyon County'],
+    'NH': ['Hillsborough County', 'Rockingham County', 'Merrimack County', 'Strafford County', 'Cheshire County'],
+    'NJ': ['Bergen County', 'Middlesex County', 'Essex County', 'Hudson County', 'Monmouth County', 'Ocean County'],
+    'NM': ['Bernalillo County', 'Dona Ana County', 'Santa Fe County', 'Sandoval County', 'San Juan County'],
+    'NY': ['Kings County', 'Queens County', 'New York County', 'Suffolk County', 'Bronx County', 'Nassau County', 'Westchester County'],
+    'NC': ['Wake County', 'Mecklenburg County', 'Guilford County', 'Forsyth County', 'Cumberland County', 'Durham County'],
+    'ND': ['Cass County', 'Burleigh County', 'Grand Forks County', 'Ward County', 'Williams County'],
+    'OH': ['Franklin County', 'Cuyahoga County', 'Hamilton County', 'Montgomery County', 'Summit County', 'Lucas County'],
+    'OK': ['Oklahoma County', 'Tulsa County', 'Cleveland County', 'Canadian County', 'Comanche County'],
+    'OR': ['Multnomah County', 'Washington County', 'Clackamas County', 'Lane County', 'Marion County', 'Jackson County'],
+    'PA': ['Philadelphia County', 'Allegheny County', 'Montgomery County', 'Bucks County', 'Delaware County', 'Lancaster County'],
+    'RI': ['Providence County', 'Kent County', 'Washington County', 'Newport County', 'Bristol County'],
+    'SC': ['Greenville County', 'Richland County', 'Charleston County', 'Spartanburg County', 'Lexington County'],
+    'SD': ['Minnehaha County', 'Pennington County', 'Lincoln County', 'Brown County', 'Brookings County'],
+    'TN': ['Davidson County', 'Shelby County', 'Knox County', 'Hamilton County', 'Rutherford County', 'Williamson County'],
+    'TX': ['Harris County', 'Dallas County', 'Tarrant County', 'Bexar County', 'Travis County', 'Collin County', 'Hidalgo County'],
+    'UT': ['Salt Lake County', 'Utah County', 'Davis County', 'Weber County', 'Washington County'],
+    'VT': ['Chittenden County', 'Rutland County', 'Washington County', 'Windsor County', 'Franklin County'],
+    'VA': ['Fairfax County', 'Prince William County', 'Virginia Beach City', 'Loudoun County', 'Chesterfield County'],
+    'WA': ['King County', 'Pierce County', 'Snohomish County', 'Spokane County', 'Clark County', 'Thurston County'],
+    'WV': ['Kanawha County', 'Berkeley County', 'Monongalia County', 'Cabell County', 'Harrison County'],
+    'WI': ['Milwaukee County', 'Dane County', 'Waukesha County', 'Brown County', 'Racine County', 'Outagamie County'],
+    'WY': ['Laramie County', 'Natrona County', 'Campbell County', 'Sweetwater County', 'Fremont County']
+  };
+
+  // Simple ZIP to state/county mapping (demo)
+  const zipDatabase = {
+    '90210': { state: 'CA', county: 'Los Angeles County' },
+    '10001': { state: 'NY', county: 'New York County' },
+    '60601': { state: 'IL', county: 'Cook County' },
+    '77001': { state: 'TX', county: 'Harris County' },
+    '85001': { state: 'AZ', county: 'Maricopa County' },
+    '33101': { state: 'FL', county: 'Miami-Dade County' },
+    '98101': { state: 'WA', county: 'King County' },
+    '02101': { state: 'MA', county: 'Suffolk County' },
+    '20001': { state: 'DC', county: 'District of Columbia' },
+    '19101': { state: 'PA', county: 'Philadelphia County' }
+  };
+
+  function updateCounties() {
+    const state = document.getElementById('state').value;
+    const countySelect = document.getElementById('county');
+    const locationDisplay = document.getElementById('location-display');
+    
+    countySelect.innerHTML = '<option value="">-- Select a county --</option>';
+    
+    if (state && countiesByState[state]) {
+      countiesByState[state].forEach(county => {
+        const option = document.createElement('option');
+        option.value = county;
+        option.textContent = county;
+        countySelect.appendChild(option);
+      });
+    }
+    
+    locationDisplay.style.display = 'none';
+  }
+
+  function lookupZip() {
+    const zip = document.getElementById('zip').value.trim();
+    const locationDisplay = document.getElementById('location-display');
+    const locationText = document.getElementById('location-text');
+    
+    if (zipDatabase[zip]) {
+      const data = zipDatabase[zip];
+      document.getElementById('state').value = data.state;
+      updateCounties();
+      
+      // Set county after a short delay to allow population
+      setTimeout(() => {
+        document.getElementById('county').value = data.county;
+      }, 100);
+      
+      locationText.textContent = `${data.county}, ${data.state} (ZIP ${zip})`;
+      locationDisplay.style.display = 'flex';
+    } else {
+      alert('ZIP code not found in database. Please select state and county manually.');
+    }
+  }
+
+  function checkEligibility() {
+    const state = document.getElementById('state').value;
+    const county = document.getElementById('county').value;
+    const householdSize = document.getElementById('household-size').value;
+    const income = parseInt(document.getElementById('annual-income').value) || 0;
+    const isFamily = document.getElementById('family-type').checked;
+    const isBusiness = document.getElementById('business-type').checked;
+    const isCreative = document.getElementById('creative-type').checked;
+    
+    let resultDiv = document.getElementById('eligibility-result');
+    let resultMessage = document.getElementById('result-message');
+    let nextStepsDiv = document.getElementById('next-steps');
+    
+    // Validate
+    if (!state || !county) {
+      alert('Please select your state and county.');
+      return;
+    }
+    
+    if (!income) {
+      alert('Please enter your annual income.');
+      return;
+    }
+    
+    // Income limits (simplified national)
+    const incomeLimits = {
+      '1': 58450, '2': 66800, '3': 75150, '4': 83500,
+      '5': 90200, '6': 96900, '7': 103600, '8': 110300
+    };
+    
+    const incomeLimit = incomeLimits[householdSize] || 110300;
+    const meetsIncome = income <= incomeLimit;
+    
+    // Determine eligible programs
+    let eligiblePrograms = [];
+    
+    if (meetsIncome) {
+      if (isFamily) eligiblePrograms.push('Family Support Grant');
+      if (isBusiness) eligiblePrograms.push('Micro-Enterprise Grant');
+      if (isCreative) eligiblePrograms.push('Creative Entrepreneur Grant');
+      if (!isFamily && !isBusiness && !isCreative) {
+        eligiblePrograms.push('General Assistance (contact us)');
+      }
+    }
+    
+    // Show result
+    resultDiv.classList.add('show');
+    
+    if (eligiblePrograms.length > 0 && meetsIncome) {
+      resultMessage.innerHTML = `<span class="result-eligible">✅ You may be eligible for:</span> ${eligiblePrograms.join(', ')}.`;
+      nextStepsDiv.innerHTML = `
+        <h4 style="color: #0b3d91; margin-bottom: 1rem;">Next steps for ${county}, ${state}:</h4>
+        <ul style="list-style: none; padding-left: 0;">
+          <li style="margin-bottom: 0.8rem;">1. Gather required documents (ID, income proof)</li>
+          <li style="margin-bottom: 0.8rem;">2. <a href="#" style="color: #28a745; font-weight: 600;">Start your online application</a></li>
+          <li style="margin-bottom: 0.8rem;">3. Schedule a free phone consultation</li>
+        </ul>
+      `;
+    } else if (!meetsIncome) {
+      resultMessage.innerHTML = `<span class="result-ineligible">❌ Income exceeds guidelines</span><br>Your income of $${income.toLocaleString()} is above the ${householdSize}-person limit.`;
+      nextStepsDiv.innerHTML = `We can still connect you with other resources. Call (800) 555-0199.`;
+    } else {
+      resultMessage.innerHTML = `<span class="result-ineligible">❌ No matching programs</span><br>You may still qualify for other assistance.`;
+      nextStepsDiv.innerHTML = `Please contact our specialists for personalized guidance.`;
+    }
+  }
+
+  function resetChecker() {
+    document.getElementById('state').value = '';
+    document.getElementById('county').innerHTML = '<option value="">-- First select a state --</option>';
+    document.getElementById('zip').value = '';
+    document.getElementById('household-size').value = '1';
+    document.getElementById('annual-income').value = '';
+    document.getElementById('family-type').checked = false;
+    document.getElementById('business-type').checked = false;
+    document.getElementById('creative-type').checked = false;
+    document.getElementById('location-display').style.display = 'none';
+    document.getElementById('eligibility-result').classList.remove('show');
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Terms of Use | US-All Community Trust Relief Program</title>
+  <style>
+    /* (same base styles as privacy.html) */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+
+    :root {
+      --primary-blue: #0b3d91;
+      --primary-green: #28a745;
+      --white: #ffffff;
+      --off-white: #f9fbfd;
+      --gray-light: #eef2f6;
+      --gray-mid: #cbd5e1;
+      --text-dark: #0f172a;
+      --text-medium: #334155;
+      --shadow-sm: 0 4px 12px rgba(0, 20, 40, 0.06);
+      --shadow-hover: 0 20px 25px -8px rgba(0, 60, 30, 0.15);
+      --border-radius-card: 1.75rem;
+      --border-radius-pill: 60px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .site-header {
+      background: var(--white);
+      padding: 1.5rem 1rem 1.2rem;
+      text-align: center;
+      border-bottom: 1px solid #e0e8f0;
+    }
+
+    .logo-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-wrapper img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 6px 14px rgba(11,61,145,0.2);
+      border: 2px solid var(--primary-green);
+    }
+
+    .program-name {
+      font-size: 2.1rem;
+      font-weight: 600;
+      color: var(--primary-blue);
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      color: #2d4b6e;
+      border-bottom: 2px solid var(--primary-green);
+      display: inline-block;
+      padding-bottom: 0.3rem;
+    }
+
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid #dee7f2;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      gap: 0.2rem 2rem;
+      padding: 0.9rem 1rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: var(--primary-blue);
+      padding: 0.3rem 0.1rem;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: var(--primary-green);
+    }
+
+    .page-header {
+      background: linear-gradient(135deg, #e8f1fe 0%, #ffffff 100%);
+      padding: 3rem 0 2rem;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-size: 2.8rem;
+      color: var(--primary-blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .last-updated {
+      color: #4a627a;
+      font-size: 1rem;
+    }
+
+    .policy-content {
+      padding: 3rem 0 5rem;
+    }
+
+    .policy-section {
+      background: white;
+      border-radius: 2rem;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid #e7edf4;
+    }
+
+    .policy-section h2 {
+      color: var(--primary-blue);
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid var(--primary-green);
+    }
+
+    .policy-section h3 {
+      color: var(--primary-blue);
+      font-size: 1.3rem;
+      margin: 1.5rem 0 1rem;
+    }
+
+    .policy-section p {
+      margin-bottom: 1.2rem;
+      color: #334155;
+    }
+
+    .policy-section ul, 
+    .policy-section ol {
+      margin: 1rem 0 1.5rem 2rem;
+      color: #334155;
+    }
+
+    .policy-section li {
+      margin-bottom: 0.5rem;
+    }
+
+    .highlight-box {
+      background: #f0f6fe;
+      border-left: 6px solid var(--primary-green);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .footer {
+      background: #0a1d30;
+      color: #d1ddee;
+      padding: 3rem 0 1.5rem;
+      border-top: 5px solid var(--primary-green);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .footer h4 {
+      color: white;
+      margin-bottom: 1.3rem;
+      border-left: 4px solid #28a745;
+      padding-left: 1rem;
+    }
+
+    .footer a {
+      color: #b6cae5;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      color: var(--primary-green);
+    }
+
+    .footer-links {
+      text-wrap: active;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .copyright {
+      text-align: center;
+      border-top: 1px solid #1f3b54;
+      margin-top: 2.8rem;
+      padding-top: 1.8rem;
+    }
+
+    @media (max-width: 700px) {
+      .container { padding: 0 1.5rem; }
+      .program-name { font-size: 1.8rem; }
+      .page-header h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo-wrapper">
+    <img src="/assets/images/logo.jpg" alt="US-All Community Trust Logo">
+    <h1 class="program-name">US-All Community Trust Relief Program</h1>
+    <div class="tagline">Support for families, entrepreneurs & nonprofits</div>
+  </div>
+</header>
+
+<nav class="sticky-nav">
+  <ul class="nav-links container">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="programs.html">Programs</a></li>
+    <li><a href="eligibility.html">Eligibility</a></li>
+    <li><a href="apply.html">Apply</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="page-header">
+  <div class="container">
+    <h1>Terms of Use</h1>
+    <div class="last-updated">Last Updated: March 15, 2025</div>
+  </div>
+</section>
+
+<main class="policy-content">
+  <div class="container">
+    <div class="policy-section">
+      <h2>Acceptance of Terms</h2>
+      <p>By accessing or using the US-All Community Trust Relief Program website ("the Site"), you agree to be bound by these Terms of Use. If you do not agree to these terms, please do not use this Site.</p>
+      
+      <div class="highlight-box">
+        <strong>📋 Important:</strong> These terms constitute a legally binding agreement between you and the US-All Community Trust Relief Program.
+      </div>
+    </div>
+
+    <div class="policy-section">
+      <h2>Program Eligibility and Applications</h2>
+      <ul>
+        <li>Submission of an application does not guarantee approval or funding.</li>
+        <li>All information provided in applications must be true, accurate, and complete.</li>
+        <li>Knowingly providing false information may result in immediate disqualification and legal action.</li>
+        <li>Funds must be used in accordance with program guidelines.</li>
+        <li>We reserve the right to verify all information provided.</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>No Payment Required</h2>
+      <p><strong>Important:</strong> There are NO application fees, processing fees, or any costs associated with applying for our grants. If anyone requests payment in connection with your application, please report it immediately to <strong>fraud@communitytrust.gov</strong> or call (800) 555-0199.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Intellectual Property</h2>
+      <p>All content on this Site, including but not limited to text, graphics, logos, icons, images, and software, is the property of the US-All Community Trust Relief Program or its content suppliers and is protected by copyright laws.</p>
+      <p>You may not:</p>
+      <ul>
+        <li>Republish, sell, or commercially exploit any Site content</li>
+        <li>Modify, distribute, or create derivative works</li>
+        <li>Use any automated means to access or scrape the Site</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>User Conduct</h2>
+      <p>When using our Site or services, you agree not to:</p>
+      <ul>
+        <li>Submit false or misleading information</li>
+        <li>Attempt to gain unauthorized access to our systems</li>
+        <li>Interfere with the proper functioning of the Site</li>
+        <li>Use the Site for any illegal purpose</li>
+        <li>Harass, abuse, or harm others</li>
+        <li>Impersonate any person or entity</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>Third-Party Links</h2>
+      <p>Our Site may contain links to external websites (Facebook, Google, etc.). We are not responsible for the content or practices of these sites. Your use of third-party sites is at your own risk and subject to their terms and policies.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Disclaimer of Warranties</h2>
+      <p>THE SITE AND ALL CONTENT ARE PROVIDED "AS IS" WITHOUT ANY WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. WE DO NOT WARRANT THAT:</p>
+      <ul>
+        <li>The Site will be uninterrupted or error-free</li>
+        <li>Defects will be corrected</li>
+        <li>The Site is free of viruses or harmful components</li>
+        <li>Application results or funding availability</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>Limitation of Liability</h2>
+      <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE US-ALL COMMUNITY TRUST RELIEF PROGRAM SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING FROM YOUR USE OF THE SITE OR PARTICIPATION IN OUR PROGRAMS.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Indemnification</h2>
+      <p>You agree to indemnify and hold harmless the US-All Community Trust Relief Program, its officers, employees, and partners from any claims arising from your violation of these Terms or your misuse of the Site.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Termination</h2>
+      <p>We reserve the right to terminate or suspend access to our Site or services immediately, without prior notice, for conduct that we believe violates these Terms or is harmful to other users or the Program.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Governing Law</h2>
+      <p>These Terms shall be governed by the laws of the United States and the State of Illinois, without regard to its conflict of law provisions.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Changes to Terms</h2>
+      <p>We may modify these Terms at any time. Changes will be effective immediately upon posting. Your continued use of the Site constitutes acceptance of the modified Terms.</p>
+    </div>
+
+    <div class="policy-section">
+  <h2>Contact Information</h2>
+  <p>For questions about these Terms:</p>
+  <ul>
+    <li>📧 usallcommunitytrustreliefprogr@gmail.com</li>
+    <li>📞 (385) 281‑3672(ext. 4)</li>
+    <li>🏛️ 2020 W El Camino Ave, <br>Sacramento, CA United States 95833</li>
+  </ul>
+    </div>
+  </div>
+</main>
+
+
+       <footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li>📞 (385) 281‑3672</li>
+          <li>📧 usallcommunitytrustrelief
+          progr@gmail.com</li>
+          <li>🏛️ 2020 W El Camino  Ave, <br>Sacramento, CA United  States  95833 </li>
+        </ul>
+
+      </div>
+    </div>
+    <div class="copyright">
+      <p>© 2025 US-All Community Trust Relief Program</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

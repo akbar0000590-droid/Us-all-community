@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Privacy Policy | US-All Community Trust Relief Program</title>
+  <style>
+    /* === RESET & BASE === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+
+    /* === DESIGN TOKENS === */
+    :root {
+      --primary-blue: #0b3d91;
+      --primary-green: #28a745;
+      --white: #ffffff;
+      --off-white: #f9fbfd;
+      --gray-light: #eef2f6;
+      --gray-mid: #cbd5e1;
+      --text-dark: #0f172a;
+      --text-medium: #334155;
+      --shadow-sm: 0 4px 12px rgba(0, 20, 40, 0.06);
+      --shadow-hover: 0 20px 25px -8px rgba(0, 60, 30, 0.15);
+      --border-radius-card: 1.75rem;
+      --border-radius-pill: 60px;
+    }
+
+    /* === UTILITY === */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* === HEADER === */
+    .site-header {
+      background: var(--white);
+      padding: 1.5rem 1rem 1.2rem;
+      text-align: center;
+      border-bottom: 1px solid #e0e8f0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    }
+
+    .logo-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-wrapper img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 6px 14px rgba(11,61,145,0.2);
+      border: 2px solid var(--primary-green);
+    }
+
+    .program-name {
+      font-size: 2.1rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--primary-blue);
+      line-height: 1.2;
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      color: #2d4b6e;
+      font-weight: 400;
+      border-bottom: 2px solid var(--primary-green);
+      display: inline-block;
+      padding-bottom: 0.3rem;
+    }
+
+    /* === STICKY NAVIGATION === */
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid #dee7f2;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      gap: 0.2rem 2rem;
+      padding: 0.9rem 1rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: var(--primary-blue);
+      padding: 0.3rem 0.1rem;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s;
+      font-size: 1.05rem;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: var(--primary-green);
+    }
+
+    /* === PAGE HEADER === */
+    .page-header {
+      background: linear-gradient(135deg, #e8f1fe 0%, #ffffff 100%);
+      padding: 3rem 0 2rem;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-size: 2.8rem;
+      color: var(--primary-blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .last-updated {
+      color: #4a627a;
+      font-size: 1rem;
+    }
+
+    /* === POLICY CONTENT === */
+    .policy-content {
+      padding: 3rem 0 5rem;
+    }
+
+    .policy-section {
+      background: white;
+      border-radius: 2rem;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid #e7edf4;
+    }
+
+    .policy-section h2 {
+      color: var(--primary-blue);
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid var(--primary-green);
+    }
+
+    .policy-section h3 {
+      color: var(--primary-blue);
+      font-size: 1.3rem;
+      margin: 1.5rem 0 1rem;
+    }
+
+    .policy-section p {
+      margin-bottom: 1.2rem;
+      color: #334155;
+    }
+
+    .policy-section ul, 
+    .policy-section ol {
+      margin: 1rem 0 1.5rem 2rem;
+      color: #334155;
+    }
+
+    .policy-section li {
+      margin-bottom: 0.5rem;
+    }
+
+    .highlight-box {
+      background: #f0f6fe;
+      border-left: 6px solid var(--primary-green);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .contact-info {
+      background: var(--off-white);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .contact-info h3 {
+      color: var(--primary-blue);
+      margin-bottom: 1rem;
+    }
+
+    .contact-methods {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .contact-method {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary-blue);
+      font-weight: 500;
+    }
+
+    /* === FOOTER === */
+    .footer {
+      background: #0a1d30;
+      color: #d1ddee;
+      padding: 3rem 0 1.5rem;
+      border-top: 5px solid var(--primary-green);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .footer h4 {
+      color: white;
+      margin-bottom: 1.3rem;
+      border-left: 4px solid #28a745;
+      padding-left: 1rem;
+    }
+
+    .footer a {
+      color: #b6cae5;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer a:hover {
+      color: var(--primary-green);
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .copyright {
+      text-align: center;
+      border-top: 1px solid #1f3b54;
+      margin-top: 2.8rem;
+      padding-top: 1.8rem;
+    }
+
+    @media (max-width: 700px) {
+      .container { padding: 0 1.5rem; }
+      .program-name { font-size: 1.8rem; }
+      .page-header h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo-wrapper">
+    <img src="/assets/images/logo.jpg" alt="US-All Community Trust Logo">
+    <h1 class="program-name">US-All Community Trust Relief Program</h1>
+    <div class="tagline">Support for families, entrepreneurs & nonprofits</div>
+  </div>
+</header>
+
+<nav class="sticky-nav">
+  <ul class="nav-links container">
+    <li><a href="/index.html">Home</a></li>
+    <li><a href="programs.html">Programs</a></li>
+    <li><a href="eligibility.html">Eligibility</a></li>
+    <li><a href="apply.html">Apply</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="page-header">
+  <div class="container">
+    <h1>Privacy Policy</h1>
+    <div class="last-updated">Last Updated: March 15, 2025</div>
+  </div>
+</section>
+
+<main class="policy-content">
+  <div class="container">
+    <div class="policy-section">
+      <h2>Our Commitment to Privacy</h2>
+      <p>The US-All Community Trust Relief Program ("we," "us," or "our") is committed to protecting the privacy and security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or apply for our grant programs.</p>
+      
+      <div class="highlight-box">
+        <strong>🔒 Key Promise:</strong> We never sell your personal information. We never share your data with third parties for marketing purposes. All information is used solely to process your application and provide support.
+      </div>
+    </div>
+
+    <div class="policy-section">
+      <h2>Information We Collect</h2>
+      
+      <h3>Personal Information You Provide</h3>
+      <ul>
+        <li><strong>Contact Information:</strong> Name, address, email address, phone number</li>
+        <li><strong>Identification:</strong> Driver's license, passport, or state ID (for verification only)</li>
+        <li><strong>Financial Information:</strong> Income details, tax returns, bank statements (for eligibility determination)</li>
+        <li><strong>Demographic Information:</strong> Household size, dependents, residency status</li>
+        <li><strong>Business Information:</strong> Business licenses, EIN, revenue (for business applicants)</li>
+        <li><strong>Communications:</strong> Records of your interactions with us via phone, email, Facebook, or contact forms</li>
+      </ul>
+
+      <h3>Information Collected Automatically</h3>
+      <ul>
+        <li><strong>Usage Data:</strong> Pages visited, time spent, links clicked</li>
+        <li><strong>Device Information:</strong> IP address, browser type, operating system</li>
+        <li><strong>Cookies:</strong> We use essential cookies to maintain your session and preferences</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>How We Use Your Information</h2>
+      <ul>
+        <li><strong>Application Processing:</strong> To determine eligibility and process your grant application</li>
+        <li><strong>Communication:</strong> To respond to your inquiries, provide status updates, and send important notices</li>
+        <li><strong>Verification:</strong> To verify identity, income, and residency information</li>
+        <li><strong>Improvement:</strong> To analyze website usage and improve our services</li>
+        <li><strong>Legal Compliance:</strong> To comply with applicable laws, regulations, and reporting requirements</li>
+        <li><strong>Fraud Prevention:</strong> To detect and prevent fraudulent applications or misuse of funds</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>Information Sharing and Disclosure</h2>
+      <p>We do not sell, rent, or trade your personal information. We may share information only in these limited circumstances:</p>
+      <ul>
+        <li><strong>With Your Consent:</strong> When you explicitly authorize us to share information</li>
+        <li><strong>Service Providers:</strong> With trusted vendors who assist in application processing (all bound by confidentiality agreements)</li>
+        <li><strong>Legal Requirements:</strong> When required by law, court order, or government agency</li>
+        <li><strong>Program Partners:</strong> With community organizations that help administer grants (only information necessary for coordination)</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>Data Security</h2>
+      <p>We implement appropriate technical and organizational measures to protect your personal information:</p>
+      <ul>
+        <li>Encryption of sensitive data in transit and at rest</li>
+        <li>Secure document upload portals with access controls</li>
+        <li>Regular security audits and staff training</li>
+        <li>Limited access to personal information on a need-to-know basis</li>
+        <li>Secure disposal of documents after retention period</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>Data Retention</h2>
+      <p>We retain your information only as long as necessary:</p>
+      <ul>
+        <li><strong>Approved Applications:</strong> 7 years (for grant reporting and audit purposes)</li>
+        <li><strong>Denied Applications:</strong> 2 years</li>
+        <li><strong>Inquiries:</strong> 1 year</li>
+        <li><strong>Website Usage Data:</strong> 26 months</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>Your Rights</h2>
+      <p>You have the right to:</p>
+      <ul>
+        <li>Access the personal information we hold about you</li>
+        <li>Request correction of inaccurate information</li>
+        <li>Request deletion of your information (subject to legal requirements)</li>
+        <li>Opt out of non-essential communications</li>
+        <li>Withdraw consent at any time</li>
+      </ul>
+      <p>To exercise these rights, contact us at <strong>privacy@communitytrust.gov</strong></p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Children's Privacy</h2>
+      <p>Our programs are designed for adults and families. We do not knowingly collect information from children under 13. If you believe a child has provided us with personal information, please contact us immediately.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Cookies and Tracking</h2>
+      <p>We use essential cookies to:</p>
+      <ul>
+        <li>Remember your session and form inputs</li>
+        <li>Maintain security and prevent fraud</li>
+        <li>Analyze website traffic anonymously</li>
+      </ul>
+      <p>You can disable cookies in your browser settings, but some website features may not function properly.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Third-Party Links</h2>
+      <p>Our website may contain links to external sites (Facebook, Google Maps, etc.). We are not responsible for the privacy practices of these sites. We encourage you to review their privacy policies.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Changes to This Policy</h2>
+      <p>We may update this Privacy Policy periodically. Changes will be posted on this page with an updated "Last Updated" date. Material changes will be communicated via email to active applicants.</p>
+    </div>
+
+    <div class="contact-info">
+      <h3>📬 Privacy Questions?</h3>
+      <p>If you have questions about this Privacy Policy or how we handle your information:</p>
+      <div class="contact-methods">
+        <div class="contact-method">📧 privacy@communitytrust.gov</div>
+        <div class="contact-method">📞 (800) 555-0199 (ext. 3)</div>
+        <div class="contact-method">🏛️ Attn: Privacy Officer, 1420 Relief Ave, Springfield, ST 12345</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li>📞 (385) 281‑3672</li>
+          <li>📧 usallcommunitytrustreliefprogr@gmail.com</li>
+          <li>🏛️ 2020 W El Camino  Ave, <br>Sacramento, CA United  States  95833 </li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>© 2025 US-All Community Trust Relief Program</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

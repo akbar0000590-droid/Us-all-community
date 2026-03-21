@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Contact Us | US-All Community Trust Relief Program</title>
+  <style>
+    /* === RESET & BASE === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: #1e293b;
+      line-height: 1.5;
+    }
+
+    /* === DESIGN TOKENS === */
+    :root {
+      --primary-blue: #0b3d91;
+      --primary-green: #28a745;
+      --white: #ffffff;
+      --off-white: #f9fbfd;
+      --gray-light: #eef2f6;
+      --gray-mid: #cbd5e1;
+      --text-dark: #0f172a;
+      --text-medium: #334155;
+      --overlay-dark: rgba(7, 25, 45, 0.8);
+      --shadow-sm: 0 4px 12px rgba(0, 20, 40, 0.06);
+      --shadow-hover: 0 20px 25px -8px rgba(0, 60, 30, 0.15);
+      --border-radius-card: 1.75rem;
+      --border-radius-pill: 60px;
+      --facebook-blue: #1877f2;
+      --gmail-red: #ea4335;
+    }
+
+    /* === UTILITY === */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* === HEADER === */
+    .site-header {
+      background: var(--white);
+      padding: 1.5rem 1rem 1.2rem;
+      text-align: center;
+      border-bottom: 1px solid #e0e8f0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    }
+
+    .logo-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-wrapper img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 6px 14px rgba(11,61,145,0.2);
+      transition: transform 0.2s ease;
+      border: 2px solid var(--primary-green);
+    }
+
+    .logo-wrapper img:hover {
+      transform: scale(1.02);
+    }
+
+    .program-name {
+      font-size: 2.1rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--primary-blue);
+      line-height: 1.2;
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      color: #2d4b6e;
+      font-weight: 400;
+      border-bottom: 2px solid var(--primary-green);
+      display: inline-block;
+      padding-bottom: 0.3rem;
+      margin-top: 0.1rem;
+    }
+
+    /* === STICKY NAVIGATION === */
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid #dee7f2;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      gap: 0.2rem 2rem;
+      padding: 0.9rem 1rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: var(--primary-blue);
+      padding: 0.3rem 0.1rem;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+      font-size: 1.05rem;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: var(--primary-green);
+      color: #0a2e6a;
+    }
+
+    .nav-links .active {
+      border-bottom-color: var(--primary-green);
+      font-weight: 600;
+    }
+
+    /* === PAGE HEADER === */
+    .page-header {
+      background: linear-gradient(135deg, #e8f1fe 0%, #ffffff 100%);
+      padding: 3.5rem 0 3rem;
+      text-align: center;
+      border-bottom: 1px solid #d9e2ef;
+    }
+
+    .page-header h1 {
+      font-size: 2.8rem;
+      color: var(--primary-blue);
+      margin-bottom: 1rem;
+    }
+
+    .page-header p {
+      font-size: 1.3rem;
+      color: #2d4b6e;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* === QUICK CONTACT BANNER === */
+    .quick-contact {
+      background: var(--primary-blue);
+      color: white;
+      border-radius: 60px;
+      padding: 1rem 2rem;
+      margin: -1.5rem auto 3rem;
+      max-width: 800px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      box-shadow: var(--shadow-hover);
+    }
+
+    .quick-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .quick-item a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .quick-item a:hover {
+      text-decoration: underline;
+      color: var(--primary-green);
+    }
+
+    /* === CONTACT GRID === */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .contact-card {
+      background: white;
+      border-radius: 2rem;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid #e7edf4;
+      transition: all 0.3s ease;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .contact-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 2.5rem;
+    }
+
+    .facebook-card .contact-icon {
+      background: #e7f0ff;
+      color: var(--facebook-blue);
+    }
+
+    .gmail-card .contact-icon {
+      background: #ffe6e3;
+      color: var(--gmail-red);
+    }
+
+    .phone-card .contact-icon {
+      background: #e3f5e6;
+      color: var(--primary-green);
+    }
+
+    .office-card .contact-icon {
+      background: #fff0d9;
+      color: #f39c12;
+    }
+
+    .contact-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+      color: var(--text-dark);
+    }
+
+    .contact-link {
+      display: inline-block;
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-decoration: none;
+      margin: 1rem 0;
+    }
+
+    .facebook-card .contact-link {
+      color: var(--facebook-blue);
+    }
+
+    .gmail-card .contact-link {
+      color: var(--gmail-red);
+    }
+
+    .phone-card .contact-link {
+      color: var(--primary-green);
+      font-size: 1.8rem;
+    }
+
+    .office-card .contact-link {
+      color: #f39c12;
+    }
+
+    .contact-detail {
+      color: #4a627a;
+      margin-bottom: 0.5rem;
+    }
+
+    .availability {
+      background: #f0f6fe;
+      border-radius: 60px;
+      padding: 0.6rem 1rem;
+      font-size: 0.9rem;
+      color: var(--primary-blue);
+      margin-top: 1rem;
+    }
+
+    /* === CONTACT FORM SECTION === */
+    .form-section {
+      background: var(--off-white);
+      border-radius: 2.5rem;
+      padding: 3rem;
+      margin: 4rem 0;
+    }
+
+    .form-title {
+      color: var(--primary-blue);
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .contact-form {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      color: var(--primary-blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 1rem 1.2rem;
+      border: 2px solid #dde3eb;
+      border-radius: 60px;
+      font-size: 1rem;
+      transition: border-color 0.2s;
+    }
+
+    .form-group textarea {
+      border-radius: 1.5rem;
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary-green);
+    }
+
+    .form-submit {
+      background: var(--primary-green);
+      color: white;
+      border: none;
+      padding: 1.2rem 3rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      width: 100%;
+    }
+
+    .form-submit:hover {
+      background: #1f8f3c;
+    }
+
+    .form-note {
+      text-align: center;
+      margin-top: 1.5rem;
+      color: #4a627a;
+      font-size: 0.95rem;
+    }
+
+    /* === OFFICE LOCATIONS === */
+    .locations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .location-card {
+      background: white;
+      border-radius: 1.8rem;
+      padding: 2rem;
+      border: 1px solid #e2eaf2;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .location-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: var(--primary-green);
+    }
+
+    .location-card h4 {
+      color: var(--primary-blue);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .location-card p {
+      margin-bottom: 0.5rem;
+      color: #4a627a;
+    }
+
+    .location-hours {
+      background: #f0f6fe;
+      border-radius: 60px;
+      padding: 0.5rem 1rem;
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: var(--primary-blue);
+    }
+
+    /* === BUSINESS HOURS === */
+    .hours-section {
+      background: linear-gradient(135deg, var(--primary-blue) 0%, #1a4ca0 100%);
+      border-radius: 2.5rem;
+      padding: 3rem;
+      color: white;
+      margin: 4rem 0;
+      text-align: center;
+    }
+
+    .hours-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .hours-item {
+      background: rgba(255,255,255,0.1);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .hours-item h4 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid var(--primary-green);
+      display: inline-block;
+      padding-bottom: 0.3rem;
+    }
+
+    .hours-item p {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .emergency-note {
+      margin-top: 2rem;
+      background: rgba(255,255,255,0.2);
+      border-radius: 60px;
+      padding: 1rem;
+    }
+
+    /* === MAP SECTION === */
+    .map-section {
+      margin: 4rem 0;
+    }
+
+    .map-placeholder {
+      background: #e8f1fe;
+      border-radius: 2.5rem;
+      padding: 4rem;
+      text-align: center;
+      border: 2px dashed var(--primary-blue);
+    }
+
+    .map-placeholder h3 {
+      color: var(--primary-blue);
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .map-placeholder p {
+      color: #4a627a;
+      margin-bottom: 1.5rem;
+    }
+
+    .map-button {
+      background: var(--primary-blue);
+      color: white;
+      border: none;
+      padding: 1rem 2.5rem;
+      border-radius: 60px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .map-button:hover {
+      background: #0a2e6a;
+    }
+
+    /* === FAQ SECTION === */
+    .faq-section {
+      margin: 4rem 0;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .faq-item {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.8rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid #e2eaf2;
+    }
+
+    .faq-item h4 {
+      color: var(--primary-blue);
+      margin-bottom: 0.8rem;
+      font-size: 1.2rem;
+    }
+
+    .faq-item p {
+      color: #4a627a;
+    }
+
+    /* === SOCIAL MEDIA SECTION === */
+    .social-section {
+      text-align: center;
+      margin: 4rem 0;
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .social-link {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: var(--off-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      text-decoration: none;
+      color: var(--primary-blue);
+      transition: all 0.2s;
+      border: 2px solid transparent;
+    }
+
+    .social-link:hover {
+      transform: scale(1.1);
+      border-color: var(--primary-green);
+      background: white;
+    }
+
+    /* === FOOTER === */
+    .footer {
+      background: #0a1d30;
+      color: #d1ddee;
+      padding: 3rem 0 1.5rem;
+      margin-top: 4rem;
+      border-top: 5px solid var(--primary-green);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .footer h4 {
+      color: white;
+      margin-bottom: 1.3rem;
+      border-left: 4px solid #28a745;
+      padding-left: 1rem;
+      font-weight: 600;
+    }
+
+    .footer a {
+      color: #b6cae5;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer a:hover {
+      color: var(--primary-green);
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .copyright {
+      text-align: center;
+      border-top: 1px solid #1f3b54;
+      margin-top: 2.8rem;
+      padding-top: 1.8rem;
+      font-size: 0.95rem;
+      color: #9bb1ca;
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 700px) {
+      .container {
+        padding: 0 1.5rem;
+      }
+      .program-name {
+        font-size: 1.8rem;
+      }
+      .page-header h1 {
+        font-size: 2.2rem;
+      }
+      .quick-contact {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .hours-section {
+        padding: 2rem;
+      }
+      .map-placeholder {
+        padding: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="logo-wrapper">
+    <img src="/assets/images/logo.jpg" alt="US-All Community Trust Logo">
+    <h1 class="program-name">US-All Community Trust Relief Program</h1>
+    <div class="tagline">Support for families, entrepreneurs & nonprofits</div>
+  </div>
+</header>
+
+<!-- STICKY NAVIGATION -->
+<nav class="sticky-nav">
+  <ul class="nav-links container">
+    <li><a href="/index.html">Home</a></li>
+    <li><a href="/pages/program.html">Programs</a></li>
+    <li><a href="/pages/checkeligibility.html">Eligibility</a></li>
+    <li><a href="/pages/apply.html">Apply</a></li>
+    <li><a href="/pages/contact.html"class="active">Contact</a></li>
+  </ul>
+</nav>
+
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="container">
+    <h1>Contact Our Support Team</h1>
+    <p>We're here to help 7 days a week — reach out anytime</p>
+  </div>
+</section>
+
+<!-- QUICK CONTACT BANNER -->
+<div class="container">
+  <div class="quick-contact">
+    <div class="quick-item">📞 <a href=>(385) 281-3672</a></div>
+    <div class="quick-item">📧 <a href=>relief@communitytrust.gov</a></div>
+    <div class="quick-item">📘 <a href>@USAllReliefProgram</a></div>
+  </div>
+</div>
+
+<main class="container">
+  <!-- CONTACT CARDS GRID -->
+  <section>
+    <h2 class="section-title" style="margin-bottom: 2rem;">Reach Us Any Way</h2>
+    <div class="contact-grid">
+      <!-- Facebook Card -->
+      <div class="contact-card facebook-card">
+        <div class="contact-icon">📘</div>
+        <h3>Facebook</h3>
+        <div class="contact-detail">@USAllCommunityTrustReliefProgram</div>
+        Message Us on Facebook</a>
+        <div class="availability">Online: 9am - 8pm EST • Response in 2h</div>
+      </div>
+
+      <!-- Gmail Card -->
+      <div class="contact-card gmail-card">
+        <div class="contact-icon">📧</div>
+        <h3>Email</h3>
+        <div class="contact-detail">usallcommunitytrustreliefprogr@gmail.com</div>
+        Send Email</a>
+        <div class="availability">Response within 24 hours • 7 days</div>
+      </div>
+
+      <!-- Phone Card -->
+      <div class="contact-card phone-card">
+        <div class="contact-icon">📞</div>
+        <h3>Phone</h3>
+        <div class="contact-detail">Toll-Free</div>
+        (385) 281-3672</a>
+        <div class="availability">Mon-Fri: 8am-8pm • Sat: 9am-3pm EST</div>
+      </div>
+
+      <!-- Office Card -->
+      <div class="contact-card office-card">
+        <div class="contact-icon">🏛️</div>
+        <h3>Main Office</h3>
+        <div class="contact-detail">Springfield Headquarters</div>
+        <div class="contact-link">
+        2020 W. El Camino ave, Sacramento, CA, United States, 95833</div>
+        <div class="availability">Walk-ins: Mon-Fri 9am-5pm (BOOK APPOINTMENTS ONLY)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT FORM -->
+  <section class="form-section">
+    <h2 class="form-title">Send Us a Message</h2>
+    <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you for contacting us. Our team will respond within 24 hours.');">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="first-name">First Name *</label>
+          <input type="text" id="first-name" required>
+        </div>
+        <div class="form-group">
+          <label for="last-name">Last Name *</label>
+          <input type="text" id="last-name" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="(123) 456-7890">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="inquiry-type">Inquiry Type *</label>
+        <select id="inquiry-type" required>
+          <option value="">-- Select --</option>
+          <option value="application">Application Assistance</option>
+          <option value="eligibility">Eligibility Question</option>
+          <option value="status">Application Status</option>
+          <option value="documents">Document Submission</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message *</label>
+        <textarea id="message" placeholder="How can we help you?" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="program">Program of Interest (optional)</label>
+        <select id="program">
+          <option value="">-- Select --</option>
+          <option value="family">Family Support Grant</option>
+          <option value="business">Micro-Enterprise Grant</option>
+          <option value="creative">Creative Entrepreneur Grant</option>
+          <option value="unsure">Not sure yet</option>
+        </select>
+      </div>
+
+      <button type="submit" class="form-submit">Send Message</button>
+      <div class="form-note">
+        We typically respond within 24 hours. For urgent matters, please call.
+      </div>
+    </form>
+  </section>
+
+  <!-- OFFICE LOCATIONS -->
+  <section>
+    <h2 class="section-title">Our Office Locations</h2>
+    <div class="locations-grid">
+      <div class="location-card">
+        <h4>📍 Springfield HQ</h4>
+        <p>2020 W. El Camino ave, </p>
+        <p>, Sacramento, CA, United States, 95833</p>
+        <p>(385) 281-3672</p>
+        <div class="location-hours">Mon-Fri: 9am-5pm • Sat: 10am-2pm</div>
+      </div>
+
+      <div class="location-card">
+        <h4>📍 Western Regional</h4>
+        <p>890 Grant Boulevard</p>
+        <p>Los Angeles, CA 90001</p>
+        <p>(385) 281-3672</p>
+        <div class="location-hours">Mon-Fri: 8am-6pm PT</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUSINESS HOURS -->
+  <section class="hours-section">
+    <h2 style="font-size: 2.2rem; margin-bottom: 1rem;">Business Hours</h2>
+    <p style="font-size: 1.2rem; margin-bottom: 2rem;">We're available when you need us</p>
+    
+    <div class="hours-grid">
+      <div class="hours-item">
+        <h4>Phone Support</h4>
+        <p>Mon-Fri: 8am - 8pm EST</p>
+        <p>Saturday: 9am - 3pm EST</p>
+        <p>Sunday: Closed</p>
+      </div>
+      <div class="hours-item">
+        <h4>Email Support</h4>
+        <p>24/7 Monitoring</p>
+        <p>Response within 24h</p>
+        <p>7 days a week</p>
+      </div>
+      <div class="hours-item">
+        <h4>Facebook</h4>
+        <p>Mon-Fri: 9am - 8pm EST</p>
+        <p>Sat-Sun: 10am - 4pm EST</p>
+        <p>Fastest response</p>
+      </div>
+      <div class="hours-item">
+        <h4>Office Walk-ins</h4>
+        <p>Mon-Fri: 9am - 5pm</p>
+        <p>Sat: By appointment</p>
+        <p>Sun: Closed</p>
+      </div>
+    </div>
+
+    <div class="emergency-note">
+      ⚠️ For urgent application issues, call our emergency line: (385) 281-3672
+    </div>
+  </section>
+
+  <!-- MAP SECTION -->
+  <section class="map-section">
+    <div class="map-placeholder">
+      <h3>📍 Find Us at Springfield HQ</h3>
+      <p>2020 W. El Camino ave, Sacramento, CA, United States, 95833</p>
+      <p style="margin-bottom: 2rem;">Click below to open in Google Maps</p>
+      <button class="map-button" onclick="https://maps.app.goo.gl/uu4tzu9EjLbR8agG7">
+        Open in Google Maps
+      </button>
+    </div>
+  </section>
+
+  <!-- SOCIAL MEDIA LINKS -->
+  <section class="social-section">
+    <h2 class="section-title">Connect With Us</h2>
+    <div class="social-links">
+      <a href="https://www.facebook.com/share/189VXkSxbN/" class="social-link" title="Facebook">📘</a>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="faq-section">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h4>How quickly do you respond?</h4>
+        <p>Facebook: 2 hours • Email: 24 hours • Phone: immediate during business hours.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Can I apply in person?</h4>
+        <p>Yes! Visit any of our office locations during business hours for in-person assistance.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What if I need language support?</h4>
+        <p>We have interpreters available for Spanish, Mandarin, Vietnamese, and Arabic.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Is there weekend support?</h4>
+        <p>Saturday phone support 9am-3pm EST. Facebook support available weekends.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li>🏛️2020 W. El Camino ave, Sacramento, CA, United States, 95833</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="/pages/program.html">Programs</a></li>
+          <li><a href="/pages/checkeligibility.html">Eligibility</a></li>
+          <li><a href="/pages/apply.html">Apply</a></li>
+        </ul>
+        <footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li>📞 (385) 281‑3672</li>
+          <li>📧 usallcommunitytrustreliefprogr@gmail.com</li>
+          <li>🏛️ 2020 W El Camino  Ave, <br>Sacramento, CA United  States  95833 </li>
+        </ul>
+
+      </div>
+      <div>
+    </div>
+    <div class="copyright">
+      <p>© 2025 US-All Community Trust Relief Program – We're here to help. No payment required.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

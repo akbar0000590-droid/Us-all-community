@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Nondiscrimination Policy | US-All Community Trust Relief Program</title>
+  <style>
+    /* (same base styles) */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+
+    :root {
+      --primary-blue: #0b3d91;
+      --primary-green: #28a745;
+      --white: #ffffff;
+      --off-white: #f9fbfd;
+      --shadow-sm: 0 4px 12px rgba(0, 20, 40, 0.06);
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .site-header {
+      background: var(--white);
+      padding: 1.5rem 1rem 1.2rem;
+      text-align: center;
+      border-bottom: 1px solid #e0e8f0;
+    }
+
+    .logo-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-wrapper img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--primary-green);
+    }
+
+    .program-name {
+      font-size: 2.1rem;
+      font-weight: 600;
+      color: var(--primary-blue);
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      color: #2d4b6e;
+      border-bottom: 2px solid var(--primary-green);
+      display: inline-block;
+    }
+
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid #dee7f2;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      gap: 0.2rem 2rem;
+      padding: 0.9rem 1rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: var(--primary-blue);
+      padding: 0.3rem 0.1rem;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: var(--primary-green);
+    }
+
+    .page-header {
+      background: linear-gradient(135deg, #e8f1fe 0%, #ffffff 100%);
+      padding: 3rem 0 2rem;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-size: 2.8rem;
+      color: var(--primary-blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .policy-content {
+      padding: 3rem 0 5rem;
+    }
+
+    .policy-section {
+      background: white;
+      border-radius: 2rem;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid #e7edf4;
+    }
+
+    .policy-section h2 {
+      color: var(--primary-blue);
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 3px solid var(--primary-green);
+    }
+
+    .policy-section h3 {
+      color: var(--primary-blue);
+      font-size: 1.3rem;
+      margin: 1.5rem 0 1rem;
+    }
+
+    .policy-section p, .policy-section li {
+      color: #334155;
+    }
+
+    .policy-section ul, .policy-section ol {
+      margin: 1rem 0 1.5rem 2rem;
+    }
+
+    .policy-section li {
+      margin-bottom: 0.5rem;
+    }
+
+    .non-discrimination-badge {
+      background: var(--primary-green);
+      color: white;
+      padding: 2rem;
+      border-radius: 2rem;
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .non-discrimination-badge h3 {
+      color: white;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .complaint-process {
+      background: #f0f6fe;
+      border-radius: 1.5rem;
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+
+    .footer {
+      background: #0a1d30;
+      color: #d1ddee;
+      padding: 3rem 0 1.5rem;
+      border-top: 5px solid var(--primary-green);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .footer h4 {
+      color: white;
+      margin-bottom: 1.3rem;
+      border-left: 4px solid #28a745;
+      padding-left: 1rem;
+    }
+
+    .footer a {
+      color: #b6cae5;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      color: var(--primary-green);
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .copyright {
+      text-align: center;
+      border-top: 1px solid #1f3b54;
+      margin-top: 2.8rem;
+      padding-top: 1.8rem;
+    }
+
+    @media (max-width: 700px) {
+      .container { padding: 0 1.5rem; }
+      .program-name { font-size: 1.8rem; }
+      .page-header h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo-wrapper">
+    <img src="/assets/images/logo.jpg" alt="US-All Community Trust Logo">
+    <h1 class="program-name">US-All Community Trust Relief Program</h1>
+    <div class="tagline">Support for families, entrepreneurs & nonprofits</div>
+  </div>
+</header>
+
+<nav class="sticky-nav">
+  <ul class="nav-links container">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="programs.html">Programs</a></li>
+    <li><a href="eligibility.html">Eligibility</a></li>
+    <li><a href="apply.html">Apply</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="page-header">
+  <div class="container">
+    <h1>Nondiscrimination Policy</h1>
+    <div class="last-updated">Last Updated: March 15, 2025</div>
+  </div>
+</section>
+
+<main class="policy-content">
+  <div class="container">
+    <div class="non-discrimination-badge">
+      <h3>Equal Opportunity for All</h3>
+      <p style="font-size: 1.2rem;">The US-All Community Trust Relief Program prohibits discrimination in all its programs and activities.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Our Commitment</h2>
+      <p>The US-All Community Trust Relief Program provides equal opportunity to all individuals and does not discriminate on the basis of:</p>
+      <ul>
+        <li><strong>Race, Color, or National Origin</strong></li>
+        <li><strong>Religion or Creed</strong></li>
+        <li><strong>Sex, Gender Identity, or Sexual Orientation</strong></li>
+        <li><strong>Age</strong></li>
+        <li><strong>Disability</strong></li>
+        <li><strong>Veteran or Military Status</strong></li>
+        <li><strong>Genetic Information</strong></li>
+        <li><strong>Citizenship or Immigration Status</strong></li>
+        <li><strong>Marital or Familial Status</strong></li>
+        <li><strong>Receipt of Public Assistance</strong></li>
+        <li><strong>Any other characteristic protected by federal, state, or local law</strong></li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>Program Access</h2>
+      <p>We ensure equal access to all program services, including:</p>
+      <ul>
+        <li>Application processing and consideration</li>
+        <li>Grant awards and disbursements</li>
+        <li>Technical assistance and support</li>
+        <li>Information and referrals</li>
+        <li>Participation in program activities</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>Language Access</h2>
+      <p>We provide free language assistance services, including:</p>
+      <ul>
+        <li>Interpreters for over 20 languages (available by phone or in-person)</li>
+        <li>Translated application materials in Spanish, Chinese, Vietnamese, Arabic, and Tagalog</li>
+        <li>Language identification cards to help staff identify your language needs</li>
+        <li>Bilingual staff at all office locations</li>
+      </ul>
+      <p style="margin-top: 1rem;"><strong>To request language assistance, text 📞 (385) 281‑3672 and say your language.
+</strong></p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Reasonable Accommodations</h2>
+      <p>We provide reasonable accommodations for individuals with disabilities, including:</p>
+      <ul>
+        <li>Alternative formats of documents (large print, braille, audio)</li>
+        <li>Sign language interpreters</li>
+        <li>Assistive technology compatibility</li>
+        <li>Accessible office locations</li>
+        <li>Flexible application procedures</li>
+      </ul>
+     <p>To request an accommodation, contact our Accessibility Coordinator at <strong>usallcommunitytrustreliefprogr@gmail.com</strong> or 📞 (385) 281‑3672.</p>
+
+    </div>
+
+    <div class="complaint-process">
+      <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">📢 Filing a Discrimination Complaint</h3>
+      <p>If you believe you have been subjected to discrimination, you have the right to file a complaint.</p>
+      
+      <h4 style="margin: 1.5rem 0 0.5rem;">How to File:</h4>
+      <ol>
+        <li>Submit a written complaint to our Civil Rights Coordinator</li>
+        <li>Include your name, contact information, and description of the alleged discrimination</li>
+        <li>Provide details: dates, individuals involved, and any witnesses</li>
+        <li>Submit within 180 days of the alleged incident</li>
+      </ol>
+
+    <h4 style="margin: 1.5rem 0 0.5rem;">Where to Submit:</h4>
+ <ul>
+   <li><strong>Email:</strong> usallcommunitytrustreliefprogr@gmail.com/li>
+   <li><strong>Phone:</strong>📞 (385) 281‑3672</li>
+   <li><strong>Address:</strong> 🏛️ 2020 W El Camino Ave, <br>Sacramento, CA United States 95833 </li>
+ </ul>
+      <p style="margin-top: 1rem;">Complaints will be investigated promptly and impartially. You will receive a written decision within 30 days.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Retaliation Prohibited</h2>
+      <p>The US-All Community Trust Relief Program strictly prohibits retaliation against any individual who:</p>
+      <ul>
+        <li>Files a discrimination complaint</li>
+        <li>Participates in an investigation</li>
+        <li>Opposes a discriminatory practice</li>
+        <li>Requests an accommodation or language assistance</li>
+      </ul>
+      <p>If you believe you have experienced retaliation, please report it immediately.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Federal Coordination</h2>
+      <p>As a recipient of federal funds, we comply with:</p>
+      <ul>
+        <li>Title VI of the Civil Rights Act of 1964</li>
+        <li>Section 504 of the Rehabilitation Act of 1973</li>
+        <li>Title II of the Americans with Disabilities Act</li>
+        <li>Age Discrimination Act of 1975</li>
+        <li>Title IX of the Education Amendments of 1972</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>Contact Information</h2>
+      <p><strong>Civil Rights Coordinator:</strong> Maria Rodriguez</p>
+      <ul>
+        <li>📧 usallcommunitytrustreliefprogr@gmail.com</li>
+        <li>📞 (385) 281‑3672 (ext. 6)</li>
+        <li>🏛️ 2020 W El Camino  Ave, Sacramento, CA United  States  95833 </li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li>📞 (385) 281‑3672</li>
+          <li>📧 usallcommunitytrustreliefprogr@gmail.com</li>
+          <li>🏛️ 2020 W El Camino Ave, <br>Sacramento, CA United States 95833 </li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>© 2025 US-All Community Trust Relief Program</p>
+    </div>
+  </div>
+</footer>
+
+</body>àaq
+</html>

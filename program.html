@@ -1,0 +1,716 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Programs | US-All Community Trust Relief Program</title>
+  <style>
+    /* === RESET & BASE === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: #1e293b;
+      line-height: 1.5;
+    }
+
+    /* === DESIGN TOKENS === */
+    :root {
+      --primary-blue: #0b3d91;
+      --primary-green: #28a745;
+      --white: #ffffff;
+      --off-white: #f9fbfd;
+      --gray-light: #eef2f6;
+      --gray-mid: #cbd5e1;
+      --text-dark: #0f172a;
+      --text-medium: #334155;
+      --overlay-dark: rgba(7, 25, 45, 0.8);
+      --shadow-sm: 0 4px 12px rgba(0, 20, 40, 0.06);
+      --shadow-hover: 0 20px 25px -8px rgba(0, 60, 30, 0.15);
+      --border-radius-card: 1.75rem;
+      --border-radius-pill: 60px;
+    }
+
+    /* === UTILITY === */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* === HEADER (matches homepage) === */
+    .site-header {
+      background: var(--white);
+      padding: 1.5rem 1rem 1.2rem;
+      text-align: center;
+      border-bottom: 1px solid #e0e8f0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    }
+
+    .logo-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-wrapper img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 6px 14px rgba(11,61,145,0.2);
+      transition: transform 0.2s ease;
+      border: 2px solid var(--primary-green);
+    }
+
+    .logo-wrapper img:hover {
+      transform: scale(1.02);
+    }
+
+    .program-name {
+      font-size: 2.1rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--primary-blue);
+      line-height: 1.2;
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      color: #2d4b6e;
+      font-weight: 400;
+      border-bottom: 2px solid var(--primary-green);
+      display: inline-block;
+      padding-bottom: 0.3rem;
+      margin-top: 0.1rem;
+    }
+
+    /* === STICKY NAVIGATION === */
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid #dee7f2;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      gap: 0.2rem 2rem;
+      padding: 0.9rem 1rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: var(--primary-blue);
+      padding: 0.3rem 0.1rem;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+      font-size: 1.05rem;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: var(--primary-green);
+      color: #0a2e6a;
+    }
+
+    .nav-links .active {
+      border-bottom-color: var(--primary-green);
+      font-weight: 600;
+    }
+
+    /* === PAGE TITLE === */
+    .page-title {
+      background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
+      padding: 3rem 0 2rem;
+      text-align: center;
+      border-bottom: 1px solid #e2eaf2;
+    }
+
+    .page-title h1 {
+      font-size: 2.8rem;
+      color: var(--primary-blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .page-title p {
+      font-size: 1.2rem;
+      color: #2d4b6e;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* === PROGRAMS GRID === */
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.5rem;
+      margin: 4rem 0;
+    }
+
+    .program-card {
+      background: var(--white);
+      border-radius: 2.2rem;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid #e7edf4;
+      transition: all 0.3s ease;
+    }
+
+    .program-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--primary-blue);
+    }
+
+    .program-header {
+      background: linear-gradient(135deg, var(--primary-blue) 0%, #1a4ca0 100%);
+      padding: 2rem 1.5rem;
+      color: white;
+    }
+
+    .program-header h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .program-header .amount {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--primary-green);
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .program-content {
+      padding: 2rem 1.8rem;
+    }
+
+    .program-content h3 {
+      color: var(--primary-blue);
+      font-size: 1.2rem;
+      margin: 1.2rem 0 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .program-content h3:first-of-type {
+      margin-top: 0;
+    }
+
+    .program-content ul {
+      list-style: none;
+      margin-bottom: 1rem;
+    }
+
+    .program-content li {
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      position: relative;
+      color: #334155;
+    }
+
+    .program-content li::before {
+      content: "•";
+      color: var(--primary-green);
+      font-weight: bold;
+      font-size: 1.2rem;
+      position: absolute;
+      left: 0;
+    }
+
+    .deadline {
+      background: #f0f6fe;
+      border-radius: 60px;
+      padding: 0.8rem 1.2rem;
+      margin: 1.5rem 0 0;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary-blue);
+      font-weight: 500;
+    }
+
+    .deadline::before {
+      content: "⏰";
+      font-size: 1.2rem;
+    }
+
+    .program-cta {
+      display: inline-block;
+      background: var(--primary-green);
+      color: white;
+      font-weight: 600;
+      padding: 0.8rem 2rem;
+      border-radius: 60px;
+      text-decoration: none;
+      margin-top: 1.5rem;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .program-cta:hover {
+      background: #1f8f3c;
+      transform: scale(1.02);
+    }
+
+    /* === QUICK COMPARISON TABLE === */
+    .comparison-section {
+      background: var(--off-white);
+      border-radius: 2.5rem;
+      padding: 3rem;
+      margin: 4rem 0;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+    }
+
+    .comparison-table th {
+      background: var(--primary-blue);
+      color: white;
+      padding: 1rem;
+      font-weight: 600;
+      text-align: left;
+    }
+
+    .comparison-table th:first-child {
+      border-radius: 1rem 0 0 0;
+    }
+
+    .comparison-table th:last-child {
+      border-radius: 0 1rem 0 0;
+    }
+
+    .comparison-table td {
+      padding: 1.2rem 1rem;
+      border-bottom: 1px solid #dde3eb;
+      background: white;
+    }
+
+    .comparison-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .comparison-table td:first-child {
+      font-weight: 600;
+      color: var(--primary-blue);
+    }
+
+    .comparison-table .green-check {
+      color: var(--primary-green);
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    /* === APPLICATION PROCESS === */
+    .process-steps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.8rem;
+      margin: 3rem 0;
+    }
+
+    .process-step {
+      flex: 1 1 180px;
+      text-align: center;
+      background: white;
+      padding: 2rem 1rem;
+      border-radius: 2rem;
+      border: 1px solid #e2eaf2;
+    }
+
+    .process-step .step-num {
+      width: 50px;
+      height: 50px;
+      background: var(--primary-green);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin: 0 auto 1rem;
+    }
+
+    /* === FAQ MINI === */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .faq-item {
+      background: white;
+      padding: 1.8rem;
+      border-radius: 1.8rem;
+      border-left: 4px solid var(--primary-green);
+    }
+
+    .faq-item h3 {
+      color: var(--primary-blue);
+      margin-bottom: 0.8rem;
+      font-size: 1.2rem;
+    }
+
+    /* === FOOTER (identical to homepage) === */
+    .footer {
+      background: #0a1d30;
+      color: #d1ddee;
+      padding: 3rem 0 1.5rem;
+      margin-top: 4rem;
+      border-top: 5px solid var(--primary-green);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .footer h4 {
+      color: white;
+      margin-bottom: 1.3rem;
+      border-left: 4px solid #28a745;
+      padding-left: 1rem;
+      font-weight: 600;
+    }
+
+    .footer a {
+      color: #b6cae5;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer a:hover {
+      color: var(--primary-green);
+      text-decoration: underline wavy 1px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .copyright {
+      text-align: center;
+      border-top: 1px solid #1f3b54;
+      margin-top: 2.8rem;
+      padding-top: 1.8rem;
+      font-size: 0.95rem;
+      color: #9bb1ca;
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 700px) {
+      .container {
+        padding: 0 1.5rem;
+      }
+      .program-name {
+        font-size: 1.8rem;
+      }
+      .page-title h1 {
+        font-size: 2.2rem;
+      }
+      .program-header h2 {
+        font-size: 1.5rem;
+      }
+      .program-header .amount {
+        font-size: 1.8rem;
+      }
+      .comparison-section {
+        padding: 1.5rem;
+      }
+      .comparison-table {
+        font-size: 0.9rem;
+      }
+      .comparison-table td, 
+      .comparison-table th {
+        padding: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER (same as homepage) -->
+<header class="site-header">
+  <div class="logo-wrapper">
+    <img src="/assets/images/logo.jpg" alt="US-All Community Trust Logo">
+    <h1 class="program-name">US-All Community Trust Relief Program</h1>
+    <div class="tagline">Support for families, entrepreneurs & nonprofits</div>
+  </div>
+</header>
+
+<!-- STICKY NAVIGATION -->
+<nav class="sticky-nav">
+  <ul class="nav-links container">
+    <li><a href="/index.html">Home</a></li>
+    <li><a href="/pages/program.html"class="active">Programs</a></li>
+    <li><a href="/pages/checkeligibility.html">Eligibility</a></li>
+    <li><a href="/pages/apply.html">Apply</a></li>
+    <li><a href="/pages/contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+
+<!-- PAGE TITLE -->
+<section class="page-title">
+  <div class="container">
+    <h1>Our Grant Programs</h1>
+    <p>Flexible funding opportunities designed for our community's diverse needs</p>
+  </div>
+</section>
+
+<main class="container">
+  <!-- PROGRAMS GRID - 3 detailed program cards -->
+  <section class="programs-grid">
+    <!-- Family Support Grant -->
+    <div class="program-card">
+      <div class="program-header">
+        <h2>Family Support Grant</h2>
+        <div class="amount">$1,000 to $20,000</div>
+      </div>
+      <div class="program-content">
+        <h3>📋 Overview</h3>
+        <p>Direct financial assistance for households with children, seniors, or dependents with special needs.</p>
+        
+        <h3>✅ Eligibility</h3>
+        <ul>
+          <li>Household income below 80% AMI (area median income)</li>
+          <li>At least one dependent child or senior (65+)</li>
+          <li>Reside in service area for 6+ months</li>
+        </ul>
+
+        <h3>📌 Supports</h3>
+        <ul>
+          <li>Rent/mortgage assistance</li>
+          <li>Utility bills and groceries</li>
+          <li>Childcare or after-school programs</li>
+        </ul>
+
+        <div class="deadline">
+          Next deadline: Rolling applications (reviewed monthly)
+        </div>
+
+        <a href="/pages/checkeligibility.html" class="program-cta">Check eligibility →</a>
+      </div>
+    </div>
+
+    <!-- Micro-Enterprise Grant -->
+    <div class="program-card">
+      <div class="program-header">
+        <h2>Micro-Enterprise Grant</h2>
+        <div class="amount">$20,000 to $100,000</div>
+      </div>
+      <div class="program-content">
+        <h3>📋 Overview</h3>
+        <p>Startup or growth capital for very small businesses, side hustles, and freelance entrepreneurs.</p>
+        
+        <h3>✅ Eligibility</h3>
+        <ul>
+          <li>Business with 1-5 employees (including owner)</li>
+          <li>In operation 6+ months or pre-launch with solid plan</li>
+          <li>Annual revenue under $100,000</li>
+        </ul>
+
+        <h3>📌 Supports</h3>
+        <ul>
+          <li>Equipment and supplies</li>
+          <li>Marketing and website development</li>
+          <li>Workspace or inventory</li>
+        </ul>
+
+        <div class="deadline">
+          Next deadline: Quarterly 
+        </div>
+
+        <a href="/pages/checkeligibility.html" class="program-cta">Check eligibility →</a>
+      </div>
+    </div>
+
+    <!-- Creative Entrepreneur Grant -->
+    <div class="program-card">
+      <div class="program-header">
+        <h2>Creative Entrepreneur Grant</h2
+        <div class="amount">$100,000 to $650,000</div>
+      </div>
+      <div class="program-content">
+        <h3>📋 Overview</h3>
+        <p>Support for artists, makers, musicians, and cultural workers to create and sustain their practice.</p>
+        
+        <h3>✅ Eligibility</h3>
+        <ul>
+          <li>Active creative practice for 1+ year</li>
+          <li>Reside in one of the 12 partner counties</li>
+          <li>Demonstrated community engagement</li>
+        </ul>
+
+        <h3>📌 Supports</h3>
+        <ul>
+          <li>Materials and studio space</li>
+          <li>Exhibition or performance costs</li>
+          <li>Professional development</li>
+        </ul>
+
+        <div class="deadline">
+          Next deadline: Annually 
+        </div>
+
+        <a href="/pages/checkeligibility.html" class="program-cta">Check eligibility →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK COMPARISON TABLE -->
+  <section class="comparison-section">
+    <h2 class="section-title">Compare Programs at a Glance</h2>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Family Support</th>
+          <th>Micro-Enterprise</th>
+          <th>Creative Entrepreneur</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Max award</td>
+          <td>$20,000</td>
+          <td>$100,000</td>
+          <td>$650,000</td>
+        </tr>
+        <tr>
+          <td>Application fee</td>
+          <td class="green-check">$0</td>
+          <td class="green-check">$0</td>
+          <td class="green-check">$0</td>
+        </tr>
+        <tr>
+          <td>Decision timeline</td>
+          <td>3-4 weeks</td>
+          <td>4-6 weeks</td>
+          <td>4-5 weeks</td>
+        </tr>
+        <tr>
+          <td>Technical assistance</td>
+          <td>✔️ Included</td>
+          <td>✔️ Business mentoring</td>
+          <td>✔️ Portfolio review</td>
+        </tr>
+        <tr>
+          <td>Renewable?</td>
+          <td>Yes, after 12 mo</td>
+          <td>Yes, after 18 mo</td>
+          <td>Yes, annually</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- HOW TO APPLY (process overview) -->
+  <section style="margin: 4rem 0">
+    <h2 class="section-title">Application Process</h2>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <h3>Create Account</h3>
+        <p style="color: #2d4b6e;">Secure Fill out the USACTRP Application Form
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <h3>Check Eligibility</h3>
+        <p style="color: #2d4b6e;">Quick pre-screening tool</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <h3>Submit Docs</h3>
+        <p style="color: #2d4b6e;">Income, ID, business proof</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <h3>Interview</h3>
+        <p style="color: #2d4b6e;">Secure interview with our support team on application process</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">5</div>
+        <h3>Decision & Funds</h3>
+        <p style="color: #2d4b6e;">Award within 6 weeks</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FREQUENTLY ASKED QUESTIONS (program-specific) -->
+  <section style="margin: 4rem 0">
+    <h2 class="section-title">Program FAQs</h2>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h3>Can I apply for more than one grant?</h3>
+        <p>Yes, but only one award per 12-month period. You must submit separate applications.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What if I don't have all documents?</h3>
+        <p>Our navigators can help you obtain birth certificates, tax records, or business licenses at no cost.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Are these grants taxable?</h3>
+        <p>Generally, grants are considered taxable income. We provide a 1099 form if award exceeds $600.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How are funds distributed?</h3>
+        <p>Direct deposit or prepaid debit card within 5 business days after approval.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALL TO ACTION -->
+  <div style="text-align: center; margin: 3rem 0 5rem;">
+    <h2 style="color: var(--primary-blue); margin-bottom: 1.5rem;">Ready to get started?</h2>
+    <a href="/pages/apply.html" class="btn" style="font-size: 1.3rem; padding: 1.2rem 3.5rem;">Apply Now — It's Free</a>
+    <p style="margin-top: 1rem; color: #4a627a;">No payment or credit card required</p>
+  </div>
+</main>
+
+<!-- FOOTER (identical to homepage) -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li>📞 (385) 281‑3672</li>
+          <li>📧 usallcommunitytrustreliefprogr@gmail.com</li>
+          <li>🏛️ 2020 W El Camino  Ave, Sacramento, CA United  States  95833 </li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>© 2025 US-All Community Trust Relief Program – Official initiative. No payment required. No misleading claims.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
+```
